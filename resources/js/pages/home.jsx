@@ -3,7 +3,6 @@ import { Container } from '@/components/container';
 import { Head, Link } from '@inertiajs/react';
 import { ArticleCard } from '@/pages/articles/partials/article-card';
 import { CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MetaTags } from '@/components/meta-tags';
 
 export default function Home(props) {
     const { articles, popular_articles } = props;
