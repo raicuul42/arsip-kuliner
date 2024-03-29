@@ -1,4 +1,4 @@
-import { IconGallery, IconX } from '@irsyadadl/paranoid';
+import { IconX } from '@irsyadadl/paranoid';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';

@@ -106,13 +106,7 @@ export function ResponsiveNavbar(props) {
                                             </Link>
                                         </DropdownMenuItem>
                                     </DropdownMenuGroup>
-                                ) : (
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuItem asChild>
-                                            <Link href="/login">Login</Link>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuGroup>
-                                )}
+                                ) : null}
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>

@@ -2,6 +2,7 @@ import { Navbar } from '@/components/navbar';
 import { Aside } from '@/components/aside';
 import { Head } from '@inertiajs/react';
 import { Container } from '@/components/container';
+import { Toaster } from '@/components/ui/sonner';
 
 export function UserLayout({ title, children }) {
     return (

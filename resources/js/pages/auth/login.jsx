@@ -86,10 +86,7 @@ export default function Login({ status, canResetPassword }) {
                         )}
                     </div>
 
-                    <div className="flex items-center justify-between">
-                        <Button variant="outline" asChild>
-                            <Link href="/register">Register</Link>
-                        </Button>
+                    <div className="flex items-center justify-end">
                         <Button className="ms-4" disabled={processing}>
                             Log in
                         </Button>

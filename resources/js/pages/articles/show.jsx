@@ -10,6 +10,7 @@ import { TableOfContents } from '@/pages/articles/partials/table-of-contents';
 import { Prose } from '@/pages/articles/partials/prose';
 import { useState } from 'react';
 import { Share } from '@/pages/articles/partials/share';
+import { MetaTags } from '@/components/meta-tags';
 
 export default function Show(props) {
     const { article } = props;
