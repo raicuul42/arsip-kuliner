@@ -26,11 +26,13 @@ export function Navbar() {
     return (
         <>
             <CommandPalette open={open} setOpen={setOpen} />
-            <nav className="hidden border-b bg-background py-1 lg:block">
+            <nav className="hidden border-b bg-background py-1 font-medium lg:block">
                 <Container>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-x-2">
-                            <Logo />
+                            <Link href="/" className="mr-4">
+                                <Logo className="size-8" />
+                            </Link>
                             <NavLink href="/">Home</NavLink>
                             <NavLink href="/articles">Articles</NavLink>
 
