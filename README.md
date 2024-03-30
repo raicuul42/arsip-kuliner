@@ -1,2 +1,2 @@
 # arsip-kuliner
-Aplikasi Skripsi
+Ensiklopedia Digital Masakan Nusantara - Skripsi - UMPAR
