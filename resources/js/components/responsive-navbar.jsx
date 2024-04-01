@@ -23,19 +23,17 @@ import { Filter, FilterResponsive } from '@/components/filter';
 export function ResponsiveNavbar(props) {
     const { auth, categories_g } = usePage().props;
     return (
-        <nav className="block border-b bg-background py-3 lg:hidden">
+        <nav className="block border-b bg-background py-3 md:hidden">
             <Container>
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-x-2">
-                        <Link href={'/'}>
-                            <Logo className="size-6" />
-                        </Link>
+                        <IconHamburger className="size-6" />
                     </div>
                     <div className="flex items-center gap-x-4">
                         <div className="flex items-center gap-x-0.5">
                             <Button
                                 size="icon"
-                                className="size-8 rounded-full [&_svg]:size-4 [&_svg]:text-muted-foreground"
+                                className="size-8 rounded-full [&_svg]:size-5 [&_svg]:text-muted-foreground"
                                 variant="ghost"
                                 onClick={() => props.setOpen(true)}
                             >

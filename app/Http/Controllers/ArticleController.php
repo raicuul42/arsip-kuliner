@@ -79,14 +79,10 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function search(Request $request)
     {
-        if (!$request->has('search')) {
-            return [];
-        }
         return Article::query()
             ->select('id', 'title', 'slug')
             ->where('title', 'like', "%{$request->search}%")
             ->whereStatus(ArticleStatus::Published)
-            ->limit(20)
             ->get()
             ->map(fn ($article) => [
                 'id' => $article->id,

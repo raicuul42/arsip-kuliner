@@ -3,16 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { debounce } from 'lodash';
 import { CommandDialog, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { router, usePage } from '@inertiajs/react';
-import {
-    IconCirclePerson,
-    IconDashboard,
-    IconHome,
-    IconLogin,
-    IconLogout,
-    IconNotes,
-    IconSettings,
-    IconSketchbookFill,
-} from '@irsyadadl/paranoid';
+import { LogOut, Settings, Filter, Home, LayoutList, Newspaper, SquareLibrary, LayoutDashboard } from 'lucide-react';
 
 const cmdic = '!rounded-md !py-2 [&_svg]:!size-4 [&_svg]:text-muted-foreground [&_svg]:mr-2';
 
@@ -41,7 +32,7 @@ export function CommandPalette({ open, setOpen }) {
                 }),
             );
             setResults(data);
-        }, 500),
+        }, 300),
         [],
     );
 
@@ -62,7 +53,7 @@ export function CommandPalette({ open, setOpen }) {
                     {results.length > 0 ? (
                         results.map((article) => (
                             <CommandItem className={cmdic} key={article.id} onSelect={() => router.get(article.href)}>
-                                <IconSketchbookFill />
+                                <Newspaper />
                                 {article.title}
                             </CommandItem>
                         ))
@@ -71,42 +62,42 @@ export function CommandPalette({ open, setOpen }) {
                             {auth.user ? (
                                 <>
                                     <CommandItem className={cmdic} onSelect={() => router.get(route('dashboard'))}>
-                                        <IconDashboard />
+                                        <LayoutDashboard />
                                         Dashboard
                                     </CommandItem>
                                     <CommandItem className={cmdic} onSelect={() => router.get(route('profile.edit'))}>
-                                        <IconSettings />
+                                        <Settings />
                                         Settings
                                     </CommandItem>
                                     <CommandItem
                                         className={cmdic}
                                         onSelect={() => router.get(route('internal-articles.index'))}
                                     >
-                                        <IconNotes />
+                                        <SquareLibrary />
                                         List articles
                                     </CommandItem>
                                     <CommandItem className={cmdic} onSelect={() => router.post(route('logout'))}>
-                                        <IconLogout />
+                                        <LogOut />
                                         Log out
                                     </CommandItem>
                                 </>
                             ) : (
                                 <>
                                     <CommandItem className={cmdic} onSelect={() => router.get(route('home'))}>
-                                        <IconHome />
+                                        <Home />
                                         Home
                                     </CommandItem>
                                     <CommandItem className={cmdic} onSelect={() => router.get(route('articles.index'))}>
-                                        <IconNotes />
+                                        <Newspaper />
                                         Articles
                                     </CommandItem>
-                                    <CommandItem className={cmdic} onSelect={() => router.get(route('login'))}>
-                                        <IconLogin />
-                                        Login
+                                    <CommandItem className={cmdic} onSelect={() => router.get(route('articles.index'))}>
+                                        <LayoutList />
+                                        Categories
                                     </CommandItem>
-                                    <CommandItem className={cmdic} onSelect={() => router.get(route('register'))}>
-                                        <IconCirclePerson />
-                                        Register
+                                    <CommandItem className={cmdic} onSelect={() => router.get(route('articles.index'))}>
+                                        <Filter />
+                                        Filter
                                     </CommandItem>
                                 </>
                             )}

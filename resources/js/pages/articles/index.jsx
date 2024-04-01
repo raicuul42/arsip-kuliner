@@ -11,7 +11,7 @@ export default function Index({ page_meta, ...props }) {
         <>
             <Head title={page_meta.title} />
             <MetaTags title={page_meta.title} description={page_meta.description} url={route('articles.index')} />
-            <div className="-mt-6 mb-6 border-b bg-background py-6 sm:-mt-16 md:mb-16 md:py-16">
+            <div className="-mt-6 mb-1 border-b bg-background py-6 sm:-mt-16 md:py-16">
                 <Container>
                     <h1 className="text-2xl font-semibold leading-none tracking-tight md:text-3xl">
                         {page_meta.title}

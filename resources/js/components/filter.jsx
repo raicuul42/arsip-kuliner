@@ -39,7 +39,7 @@ export function Filter() {
         <DropdownMenu>
             <DropdownMenuTrigger
                 className={cn(
-                    'group flex items-center p-4 text-sm text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none',
+                    'group flex items-center pl-3 text-sm text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none',
                     'data-[state=open]:text-foreground',
                 )}
             >

@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon 
 
 export function Pagination({ meta, links }) {
     return (
-        <div className="flex justify-center px-5 pt-8">
+        <div className="flex justify-center px-5">
             <div className="flex items-center gap-1 [&_svg]:h-4 [&_svg]:w-4">
                 {meta.current_page !== 1 && (
                     <Link href={links.first} className={buttonVariants({ size: 'icon', variant: 'outline' })}>

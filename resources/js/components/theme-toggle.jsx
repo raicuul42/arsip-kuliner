@@ -8,7 +8,7 @@ export function ThemeToggle() {
     const { setTheme } = useTheme();
 
     return (
-        <div className="[&_button]:size-8 [&_button]:place-content-center [&_button]:rounded-full [&_svg]:size-4 [&_svg]:text-muted-foreground">
+        <div className="[&_button]:size-8 [&_button]:place-content-center [&_button]:rounded-full [&_svg]:size-5 [&_svg]:text-muted-foreground">
             <Button size="icon" className="grid dark:hidden" variant="ghost" onClick={() => setTheme('dark')}>
                 <IconMoonStar />
             </Button>

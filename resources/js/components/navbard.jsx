@@ -20,57 +20,59 @@ import { CommandPalette } from '@/components/command-palette';
 import { useState } from 'react';
 import { Filter } from '@/components/filter';
 
-export function Navbar() {
+export function Navbard() {
     const { auth, categories_g } = usePage().props;
     const [open, setOpen] = useState(false);
+    const pathname = usePage().url;
     return (
         <>
             <CommandPalette open={open} setOpen={setOpen} />
-            <nav className="hidden border-b bg-background py-1 font-medium lg:block">
+            <nav className="hidden border-b bg-transparent py-2 font-medium lg:block">
                 <Container>
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-x-2">
+                        <div className="flex h-14 shrink-0 items-center">
                             <Link href="/" className="mr-4">
                                 <Logo className="size-8" />
                             </Link>
-                            <NavLink href="/">Home</NavLink>
-                            <NavLink href="/articles">Articles</NavLink>
-
-                            <Filter />
-
-                            <DropdownMenu>
-                                <DropdownMenuTrigger
-                                    className={cn(
-                                        'group flex items-center p-4 text-sm text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none',
-                                        'data-[state=open]:text-foreground',
-                                    )}
-                                >
-                                    Categories
-                                    <IconChevronDown className="ml-2 size-4 duration-200 group-data-[state=open]:rotate-180" />
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56">
-                                    {categories_g.map((category) => (
-                                        <DropdownMenuItem key={category.id} asChild>
-                                            <Link href={route('categories.show', [category])}>{category.name}</Link>
-                                        </DropdownMenuItem>
-                                    ))}
-                                </DropdownMenuContent>
-                            </DropdownMenu>
                         </div>
-                        <div className="flex items-center gap-x-7">
-                            <div className="flex items-center gap-x-4">
-                                <Button
-                                    size="icon"
-                                    className="size-8 rounded-full [&_svg]:size-4 [&_svg]:text-muted-foreground"
-                                    variant="ghost"
-                                    onClick={() => setOpen(true)}
-                                >
-                                    <IconSearch />
-                                </Button>
-                                <ThemeToggle />
+                        <div className="flex items-center">
+                            <div className="flex items-center gap-x-2">
+                                <NavLink href="/">Home</NavLink>
+                                <NavLink href="/articles">Articles</NavLink>
+                                <Filter />
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger
+                                        className={cn(
+                                            'group flex items-center p-4 text-sm text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none',
+                                            'data-[state=open]:text-foreground',
+                                        )}
+                                    >
+                                        Categories
+                                        <IconChevronDown className="ml-2 size-4 duration-200 group-data-[state=open]:rotate-180" />
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent className="w-56">
+                                        {categories_g.map((category) => (
+                                            <DropdownMenuItem key={category.id} asChild>
+                                                <Link href={route('categories.show', [category])}>{category.name}</Link>
+                                            </DropdownMenuItem>
+                                        ))}
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                             </div>
-                            {
-                                auth.user ? (
+                            <div className="mx-4 h-8 w-px bg-foreground/45" />
+                            <div className="flex items-center gap-x-7">
+                                <div className="flex items-center gap-x-4">
+                                    <Button
+                                        size="icon"
+                                        className="size-8 rounded-full [&_svg]:size-5 [&_svg]:text-muted-foreground"
+                                        variant="ghost"
+                                        onClick={() => setOpen(true)}
+                                    >
+                                        <IconSearch />
+                                    </Button>
+                                    <ThemeToggle />
+                                </div>
+                                {auth.user ? (
                                     <DropdownMenu>
                                         <DropdownMenuTrigger className="text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none">
                                             <Avatar className="size-6 sm:size-8">
@@ -106,11 +108,8 @@ export function Navbar() {
                                             </DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
-                                ) : null
-                                // <Button asChild variant="outline">
-                                //     <Link href="/login">Login</Link>
-                                // </Button>
-                            }
+                                ) : null}
+                            </div>
                         </div>
                     </div>
                 </Container>
@@ -121,6 +120,7 @@ export function Navbar() {
 }
 
 export function NavLink({ className, ...props }) {
+    const pathname = usePage().url;
     return (
         <Link
             className={cn('p-4 text-sm text-muted-foreground transition duration-200 hover:text-foreground', className)}
