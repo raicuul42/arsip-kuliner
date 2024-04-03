@@ -23,13 +23,13 @@ import { useScroll } from '@/hooks/use-scroll';
 export function ResponsiveNav() {
     const { auth } = usePage().props;
     const [open, setOpen] = useState(false);
-    const { y, x, scrollDirection } = useScroll();
+    const scroll = useScroll();
 
     return (
         <>
             <div className="pb-16 md:hidden"></div>
             <nav
-                className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all md:hidden ${scrollDirection === 'down' ? 'visible' : 'invisible -translate-y-full'}`}
+                className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all md:hidden ${scroll.y > 150 && scroll.y - scroll.lastY > 0 ? '-translate-y-full' : 'null'}`}
             >
                 <Container>
                     <div className="flex items-center justify-between">
@@ -73,8 +73,8 @@ export function ResponsiveNav() {
                                             </NavLink>
                                             <NavLink
                                                 icon={LayoutGridIcon}
-                                                active={route().current('articles.list')}
-                                                href={route('articles.list')}
+                                                active={route().current('internal-articles.*')}
+                                                href={route('internal-articles.index')}
                                             >
                                                 List of Articles
                                             </NavLink>

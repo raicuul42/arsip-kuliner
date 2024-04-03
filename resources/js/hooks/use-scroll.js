@@ -1,28 +1,35 @@
-import { useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-export function useScroll(){
-   const [lastScrollTop, setLastScrollTop] = useState(0);
-   const [bodyOffset, setBodyOffset] = useState(document.body.getBoundingClientRect())
-   const [scrollY, setScrollY] = useState(bodyOffset.top)
-   const [scrollX, setScrollX] = useState(bodyOffset.left)
-   const [scrollDirection, setScrollDirection] = useState()
+export function useScroll() {
+  const [data, setData] = useState({
+    x: 0,
+    y: 0,
+    lastX: 0,
+    lastY: 0
+  });
 
-   const listener = e => {
-      setBodyOffset(document.body.getBoundingClientRect())
-      setScrollY(-bodyOffset.top)
-      setScrollX(bodyOffset.left)
-      setScrollDirection(lastScrollTop > -bodyOffset.top ? 'down' : 'up')
-      setLastScrollTop(-bodyOffset.top)
-   }
+  // set up event listeners
+  useEffect(() => {
+    const handleScroll = () => {
+      setData((last) => {
+        return {
+          x: window.scrollX,
+          y: window.scrollY,
+          lastX: last.x,
+          lastY: last.y
+        };
+      });
+    };
 
-   useEffect(() => {
-      window.addEventListener('scroll', listener)
-      return() => {
-         window.removeEventListener('scroll', listener)
-      }
-   })
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
 
-   return {
-      scrollY, scrollX, scrollDirection
-   }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return data;
 }
+
+export const ScrollContext = createContext(null);
