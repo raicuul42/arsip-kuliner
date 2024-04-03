@@ -93,7 +93,7 @@ function Hero() {
                     }}
                 />
             </div>
-            <div className="relative mx-auto max-w-7xl items-center px-6 pb-16 sm:pt-6 md:grid md:h-screen md:items-center md:pt-0">
+            <div className="relative mx-auto max-w-7xl items-center px-6 pb-16 sm:pt-6 md:grid md:h-[calc(100vh-74px)] md:items-center md:pt-0">
                 <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-2xl lg:pt-8">
                     <div className="hidden md:block">
                         <Link href={route('articles.index')} className="inline-flex space-x-6">
