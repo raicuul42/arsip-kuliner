@@ -24,7 +24,11 @@ export function ResponsiveNav() {
     const { auth } = usePage().props;
     const [open, setOpen] = useState(false);
     const scroll = useScroll();
-
+    useEffect(() => {
+        return router.on('finish', () => {
+            setOpen(false);
+        });
+    }, []);
     return (
         <>
             <div className="pb-16 md:hidden"></div>
@@ -46,130 +50,52 @@ export function ResponsiveNav() {
                         <div className="flex">
                             <ThemeToggle />
                         </div>
-                        <Sheet open={open} onOpenChange={setOpen}>
-                            <SheetContent side="left">
-                                <Link href="/" className="mr-4">
-                                    <Logo className="size-6" />
-                                </Link>
-                                <div className="-mx-2">
-                                    <NavLink active={route().current('home')} icon={HomeIcon} href={route('home')}>
-                                        Home
-                                    </NavLink>
-                                    <NavLink
-                                        active={route().current('articles.index')}
-                                        icon={CoffeeIcon}
-                                        href={route('articles.index')}
-                                    >
-                                        Articles
-                                    </NavLink>
-                                    {auth.user ? (
-                                        <>
-                                            <NavLink
-                                                active={route().current('profile.edit')}
-                                                icon={Settings2Icon}
-                                                href={route('profile.edit')}
-                                            >
-                                                Settings
-                                            </NavLink>
-                                            <NavLink
-                                                icon={LayoutGridIcon}
-                                                active={route().current('internal-articles.*')}
-                                                href={route('internal-articles.index')}
-                                            >
-                                                List of Articles
-                                            </NavLink>
-                                            <NavLink icon={PowerIcon} href={route('logout')} method="post" as="button">
-                                                Logout
-                                            </NavLink>
-                                        </>
-                                    ) : null}
-                                </div>
-                            </SheetContent>
-                        </Sheet>
                     </div>
                 </Container>
+                <Sheet open={open} onOpenChange={setOpen}>
+                    <SheetContent side="left" className="w-3/5">
+                        <Link href="/" className="mr-4">
+                            <Logo className="size-6" />
+                        </Link>
+                        <div className="-mx-2">
+                            <NavLink active={route().current('home')} icon={HomeIcon} href={route('home')}>
+                                Home
+                            </NavLink>
+                            <NavLink
+                                active={route().current('articles.index')}
+                                icon={CoffeeIcon}
+                                href={route('articles.index')}
+                            >
+                                Articles
+                            </NavLink>
+                            {auth.user ? (
+                                <>
+                                    <NavLink
+                                        active={route().current('profile.edit')}
+                                        icon={Settings2Icon}
+                                        href={route('profile.edit')}
+                                    >
+                                        Settings
+                                    </NavLink>
+                                    <NavLink
+                                        icon={LayoutGridIcon}
+                                        active={route().current('internal-articles.index')}
+                                        href={route('internal-articles.index')}
+                                    >
+                                        List of Articles
+                                    </NavLink>
+                                    <NavLink icon={PowerIcon} href={route('logout')} method="post" as="button">
+                                        Logout
+                                    </NavLink>
+                                </>
+                            ) : null}
+                        </div>
+                    </SheetContent>
+                </Sheet>
             </nav>
         </>
     );
 }
-
-// export function ResponsiveNav() {
-//     const { auth } = usePage().props;
-//     const [open, setOpen] = useState(false);
-
-//     useEffect(() => {
-//         return router.on('finish', () => {
-//             setOpen(false);
-//         });
-//     }, []);
-
-//     return (
-//         <>
-//             <div className="pb-16 md:hidden"></div>
-//             <nav className="fixed top-0 z-40 w-full border-b bg-background/80 py-2 backdrop-blur-lg transition-all md:hidden">
-//                 <Container>
-//                     <div className="flex items-center justify-between">
-//                         <div className="flex">
-//                             <Button variant="ghost" size="icon" onClick={() => setOpen(true)}>
-//                                 <IconHamburger className="size-5" />
-//                             </Button>
-//                         </div>
-//                         <div className="flex">
-//                             <Link href={route('home')}>
-//                                 <Logo className="size-6" />
-//                             </Link>
-//                         </div>
-
-//                         <div className="flex">
-//                             <ThemeToggle />
-//                         </div>
-
-//                         <Sheet open={open} onOpenChange={setOpen}>
-//                             <SheetContent side="left">
-//                                 <Link href="/" className="mr-4">
-//                                     <Logo className="size-6" />
-//                                 </Link>
-//                                 <div className="-mx-2">
-//                                     <NavLink active={route().current('home')} icon={HomeIcon} href={route('home')}>
-//                                         Home
-//                                     </NavLink>
-//                                     <NavLink
-//                                         active={route().current('articles.index')}
-//                                         icon={CoffeeIcon}
-//                                         href={route('articles.index')}
-//                                     >
-//                                         Articles
-//                                     </NavLink>
-//                                     {auth.user ? (
-//                                         <>
-//                                             <NavLink
-//                                                 active={route().current('profile.edit')}
-//                                                 icon={Settings2Icon}
-//                                                 href={route('profile.edit')}
-//                                             >
-//                                                 Settings
-//                                             </NavLink>
-//                                             <NavLink
-//                                                 icon={LayoutGridIcon}
-//                                                 active={route().current('articles.list')}
-//                                                 href={route('articles.list')}
-//                                             >
-//                                                 List of Articles
-//                                             </NavLink>
-//                                             <NavLink icon={PowerIcon} href={route('logout')} method="post" as="button">
-//                                                 Logout
-//                                             </NavLink>
-//                                         </>
-//                                     ) : null}
-//                                 </div>
-//                             </SheetContent>
-//                         </Sheet>
-//                     </div>
-//                 </Container>
-//             </nav>
-//         </>
-//     );
-// }
 
 export function NavLink({ active, icon: Icon, ...props }) {
     return (
