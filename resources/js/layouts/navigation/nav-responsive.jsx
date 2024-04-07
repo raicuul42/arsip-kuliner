@@ -1,23 +1,13 @@
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Link, router, usePage } from '@inertiajs/react';
 import { Logo } from '@/components/logo';
-import {
-    BoxIcon,
-    CoffeeIcon,
-    FlameIcon,
-    HomeIcon,
-    LayoutGridIcon,
-    MenuIcon,
-    PowerIcon,
-    Settings2Icon,
-    UserPlus,
-} from 'lucide-react';
+import { CoffeeIcon, HomeIcon, LayoutGridIcon, PowerIcon, Settings2Icon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Container } from '@/components/container';
 import { IconHamburger } from '@irsyadadl/paranoid';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useScroll } from '@/hooks/use-scroll';
 
 export function ResponsiveNav() {
@@ -36,7 +26,7 @@ export function ResponsiveNav() {
                 className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all md:hidden ${scroll.y > 150 && scroll.y - scroll.lastY > 0 ? '-translate-y-full' : 'null'}`}
             >
                 <Container>
-                    <div className="flex items-center justify-between">
+                    <ul className="flex items-center justify-between">
                         <div className="flex">
                             <Button variant="ghost" size="icon" onClick={() => setOpen(true)}>
                                 <IconHamburger className="size-6" />
@@ -50,7 +40,7 @@ export function ResponsiveNav() {
                         <div className="flex">
                             <ThemeToggle />
                         </div>
-                    </div>
+                    </ul>
                 </Container>
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetContent side="left" className="w-3/5">
@@ -101,7 +91,7 @@ export function NavLink({ active, icon: Icon, ...props }) {
     return (
         <Link
             className={cn(
-                'flex items-center rounded px-2 py-2 text-sm hover:bg-accent',
+                'mb-2 flex items-center rounded px-2 py-2 text-sm hover:bg-accent',
                 active ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:text-foreground',
             )}
             {...props}

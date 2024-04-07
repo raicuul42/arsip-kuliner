@@ -103,7 +103,7 @@ export function Footer() {
                         <Logo />
                         <p className="text-sm leading-6 text-muted-foreground">
                             Terhubung dengan kekayaan budaya Nusantara melalui aplikasi kami yang mempersembahkan lebih
-                            dari sekadar resep masakan. Di sini, Anda akan menemukan cerita-cerita menarik, tip-tips
+                            dari sekadar resep masakan. Di sini, Anda akan menemukan cerita-cerita menarik, tips-tips
                             memasak, dan panduan lengkap untuk mengeksplorasi dunia kuliner Nusantara.
                         </p>
                         <div className="flex space-x-6">

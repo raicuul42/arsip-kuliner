@@ -7,7 +7,7 @@ export function AppLayout({ children }) {
         <div>
             <Toaster position="top-right" />
             <Navigation />
-            <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 py-6 md:py-6 lg:pb-24 lg:pt-16">
+            <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 py-6 md:py-16">
                 {children}
             </main>
             <Footer />
