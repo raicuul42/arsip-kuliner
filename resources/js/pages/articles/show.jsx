@@ -8,7 +8,6 @@ import { RelatedArticles } from '@/pages/articles/partials/related-articles';
 import { Author } from '@/pages/articles/partials/author';
 import { TableOfContents } from '@/pages/articles/partials/table-of-contents';
 import { Prose } from '@/pages/articles/partials/prose';
-import { useState } from 'react';
 import { Share } from '@/pages/articles/partials/share';
 import { MetaTags } from '@/components/meta-tags';
 
@@ -27,7 +26,9 @@ export default function Show(props) {
                 <div className="flex flex-col-reverse items-start gap-y-16 lg:grid lg:grid-cols-3 lg:gap-x-16">
                     <div className="space-y-12 lg:sticky lg:top-10 lg:col-span-1">
                         <Author user={article.user} />
+
                         <TableOfContents articleId={article.id} />
+
                         <RelatedArticles />
                     </div>
                     <div className="space-y-6 lg:col-span-2">
@@ -48,8 +49,18 @@ export default function Show(props) {
                                 <time>{article.published_at}</time>
                                 <span className="mx-2">|</span>
                                 <Link href={`/categories/${article.category.slug}`}>
-                                    <Badge className="outline">{article.category.name}</Badge>
+                                    <Badge variant="default">{article.category.name}</Badge>
                                 </Link>
+                                <span className="mx-2">|</span>
+                                {article.tags.length > 0 ? (
+                                    <div className="flex items-center gap-x-2">
+                                        {article.tags.map((tag, i) => (
+                                            <Link key={i} href={route('tags.show', [tag])}>
+                                                <Badge variant="outline">{tag.name}</Badge>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                ) : null}
                             </div>
                             <div className="flex">
                                 <Share article={article} />
@@ -59,16 +70,6 @@ export default function Show(props) {
                         <p className="text-muted-foreground">{article.teaser}</p>
 
                         <Prose content={article.content} />
-
-                        {article.tags.length > 0 ? (
-                            <div className="flex items-center gap-x-2">
-                                {article.tags.map((tag, i) => (
-                                    <Link key={i} href={route('tags.show', [tag])}>
-                                        <Badge variant="outline">{tag.name}</Badge>
-                                    </Link>
-                                ))}
-                            </div>
-                        ) : null}
                     </div>
                 </div>
             </Container>

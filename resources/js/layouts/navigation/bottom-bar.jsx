@@ -1,4 +1,3 @@
-import { Container } from '@/components/container';
 import {
     IconHome,
     IconHomeFill,
@@ -17,7 +16,6 @@ import { Button } from '@/components/ui/button';
 export function BottomBar() {
     const { auth } = usePage().props;
     const [open, setOpen] = useState(false);
-
     return (
         <>
             <CommandPalette open={open} setOpen={setOpen} />

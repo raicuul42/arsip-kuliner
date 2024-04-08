@@ -16,14 +16,11 @@ export function AsideLink({ active = false, ...props }) {
 export function Aside() {
     return (
         <nav className="grid w-full gap-4 text-sm text-muted-foreground lg:sticky lg:top-10 lg:w-1/5">
-            <AsideLink href={route('dashboard')} active={route().current('dashboard')}>
+            <AsideLink href={route('internal-articles.index')} active={route().current('internal-articles.*')}>
                 Dashboard
             </AsideLink>
             <AsideLink href={route('profile.edit')} active={route().current('profile.edit')}>
                 Settings
-            </AsideLink>
-            <AsideLink href={route('internal-articles.index')} active={route().current('internal-articles.*')}>
-                List Articles
             </AsideLink>
             <AsideLink href={route('categories.index')} active={route().current('categories.*')}>
                 Categories

@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {
-        return inertia('dashboard');
+        return redirect()->route('internal-articles.index');
     }
 }

@@ -244,4 +244,4 @@ export default function List({ auth, ...props }) {
     );
 }
 
-List.layout = (page) => <UserLayout title="Articles List" children={page} />;
+List.layout = (page) => <UserLayout title="Dashboard" children={page} />;

@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
-import { cn, kebabCase } from '@/lib/utils';
+import { useEffect, useState, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 export function TableOfContents({ articleId }) {
     const [headings, setHeadings] = useState([]);
+    const [currentHeadingID, setCurrentHeadingID] = useState(undefined);
 
     useEffect(() => {
-        const elements = Array.from(document.querySelectorAll('.prose h2:not(.txteadf), .prose h3, .prose h4')).map(
-            (elem) => ({
-                id: elem.id,
-                text: elem.innerText,
-                level: Number(elem.nodeName.charAt(1)),
-            }),
-        );
+        const headingList = document.querySelectorAll('.prose h2:not(.txteadf), .prose h3, .prose h4 h2');
+        const headingArray = Array.from(headingList);
+        headingArray.forEach((heading) => {
+            (heading.dataset.id = Math.round(Math.random() * 100000).toString()),
+                (heading.id = heading.id),
+                (heading.text = heading.innerText),
+                (heading.level = Number(heading.nodeName.charAt(1)));
+        });
 
-        setHeadings(elements);
+        setHeadings(headingArray);
     }, [articleId]);
 
     const getClassName = (level) => {
@@ -29,6 +31,32 @@ export function TableOfContents({ articleId }) {
         }
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 1) {
+                        setCurrentHeadingID(entry.target.dataset.id);
+                    }
+                });
+            },
+            {
+                rootMargin: '0% 0% -80% 0%',
+                threshold: 1,
+            },
+        );
+
+        if (headings.length) {
+            headings.forEach((s) => {
+                observer.observe(s);
+            });
+        }
+
+        return () => {
+            return observer.disconnect();
+        };
+    }, [headings.length]);
+
     return (
         <aside className="hidden rounded-lg border bg-background p-4 lg:block">
             <h3 className="mb-2 text-lg font-semibold tracking-tight">Table of Contents</h3>
@@ -36,13 +64,25 @@ export function TableOfContents({ articleId }) {
                 <ul className="flex flex-col gap-y-4">
                     {headings.map((heading, index) => (
                         <li
-                            key={index}
+                            key={heading.dataset.id}
                             className={cn(
                                 getClassName(heading.level),
-                                'text-sm tracking-tighter text-foreground/70 transition first:hidden hover:text-foreground [&>a.active]:font-semibold [&>a.active]:text-foreground',
+                                'cursor-pointer text-sm tracking-tighter text-muted-foreground transition first:hidden hover:text-foreground',
                             )}
                         >
-                            <a href={`#content-${kebabCase(heading.text)}`}>{heading.text}</a>
+                            <span
+                                key={heading.dataset.id}
+                                data-id={heading.dataset.id}
+                                onClick={() => {
+                                    window.scrollTo({
+                                        top: heading.getBoundingClientRect().top + window.scrollY - 20,
+                                        behavior: 'smooth',
+                                    });
+                                }}
+                                className={currentHeadingID === heading.dataset.id ? 'font-medium text-foreground' : ''}
+                            >
+                                {heading.text}
+                            </span>
                         </li>
                     ))}
                 </ul>
