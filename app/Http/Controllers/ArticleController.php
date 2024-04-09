@@ -31,8 +31,6 @@ class ArticleController extends Controller implements HasMiddleware
             ->with('category:id,name,slug', 'user:id,name')
             ->where('status', ArticleStatus::Published)
             ->when($key === 'latest', fn ($query) => $query->latest('published_at'))
-            ->when($key === 'trending', fn ($query) => $query->trending())
-            ->when($key === 'most-likes', fn ($query) => $query->mostLikes())
             ->when($key === 'year', fn ($query) => $query->popularThisYear())
             ->when($key === 'month', fn ($query) => $query->popularThisMonth())
             ->when($key === 'week', fn ($query) => $query->popularThisWeek())
