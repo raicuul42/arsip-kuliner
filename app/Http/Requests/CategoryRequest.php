@@ -24,6 +24,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => ['required', Rule::unique('categories', 'name')->ignore($this?->category)],
+            'thumbnail' => ['nullable', 'image', 'max:5120'],
+            'teaser' => ['required', 'string', 'min:3', 'max:255'],
         ];
     }
 }

@@ -9,7 +9,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { IconChevronDown } from '@irsyadadl/paranoid';
+import { IconChevronDown, IconFilter, IconFilterFill } from '@irsyadadl/paranoid';
 
 export const filters = [
     {

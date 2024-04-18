@@ -2,6 +2,7 @@ import { Link } from '@inertiajs/react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Badge } from '@/components/ui/badge';
 import { limitChars } from '@/lib/utils';
+import { Image } from '@/components/image';
 
 export function ArticleCard({ article }) {
     return (
@@ -11,7 +12,7 @@ export function ArticleCard({ article }) {
                 href={route('articles.show', [article])}
             >
                 <AspectRatio ratio={1.91}>
-                    <img
+                    <Image
                         className="grid h-full w-full place-content-center object-cover object-center text-center font-mono text-xs"
                         src={article.thumbnail}
                         alt={limitChars(article.title)}
@@ -28,11 +29,9 @@ export function ArticleCard({ article }) {
             <Link className="block font-semibold" href={route('articles.show', [article])}>
                 {article.title}
             </Link>
+
             <p className="text-sm text-muted-foreground">{article.teaser}</p>
-            <div className="flex items-center justify-between text-sm text-muted-foreground">
-                <Link href={`/${article.user.id}`} className="hover:text-foreground">
-                    {article.user.name}
-                </Link>
+            <div className="flex items-center justify-end text-sm text-muted-foreground">
                 <time>{article.published_at}</time>
             </div>
         </article>

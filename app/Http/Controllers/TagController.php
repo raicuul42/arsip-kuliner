@@ -51,6 +51,8 @@ class TagController extends Controller
         Tag::create([
             'name' => $request->name,
             'slug' => str($request->name)->slug(),
+            'thumbnail' => $request->file('thumbnail') ? $request->file('thumbnail')->store('thumbnails', 'public') : null,
+            'teaser' => $request->teaser,
         ]);
 
         return to_route('tags.index');
@@ -103,6 +105,8 @@ class TagController extends Controller
         $tag->update([
             'name' => $request->name,
             'slug' => str($request->name)->slug(),
+            'thumbnail' => $request->file('thumbnail') ? $request->file('thumbnail')->store('thumbnails', 'public') : '',
+            'teaser' => $request->teaser,
         ]);
 
         return to_route('tags.index');

@@ -7,7 +7,7 @@ import { Navigation } from '@/layouts/navigation/index';
 export function UserLayout({ title, children }) {
     return (
         <div className="flex min-h-screen w-full flex-col">
-            <Toaster position="top-right" />
+            <Toaster />
             <Head title={title} />
             <Navigation />
             <main className="min-h-[calc(100vh_-_theme(spacing.16))] bg-muted/40 py-6 lg:gap-8 lg:py-16">

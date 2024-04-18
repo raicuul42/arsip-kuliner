@@ -8,6 +8,14 @@ Route::get('dashboard', Controllers\DashboardController::class)->middleware(['au
 Route::get('articles/tags/{tag:slug}', [Controllers\TagController::class, 'show'])->name('tags.show');
 Route::get('articles/categories/{category:slug}', [Controllers\CategoryController::class, 'show'])->name('categories.show');
 
+Route::resource('category-list', Controllers\CategoryListController::class)
+    ->scoped(['article' => 'slug'])
+    ->only('show', 'index');
+
+Route::resource('tag-list', Controllers\TagListController::class)
+    ->scoped(['article' => 'slug'])
+    ->only('show', 'index');
+
 Route::resource('categories', Controllers\CategoryController::class)
     ->except(['show'])
     ->middleware(['auth', 'role:admin']);

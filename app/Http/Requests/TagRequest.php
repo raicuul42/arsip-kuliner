@@ -24,6 +24,8 @@ class TagRequest extends FormRequest
     {
         return [
             'name' => ['required', Rule::unique('tags', 'name')->ignore($this?->tag)],
+            'thumbnail' => ['nullable', 'image', 'max:5120'],
+            'teaser' => ['required', 'string', 'min:3', 'max:255'],
         ];
     }
 }

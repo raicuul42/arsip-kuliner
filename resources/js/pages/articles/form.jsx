@@ -10,6 +10,7 @@ import { MultiSelect } from '@/components/multi-select';
 import { InputErrorMessage } from '@/components/input-error-message';
 import { Textarea } from '@/components/ui/textarea';
 import { FileUpload } from '@/components/file-upload';
+import { Editor } from '@/components/editor';
 import { flashMessage } from '@/lib/utils';
 import { toast } from 'sonner';
 
@@ -86,7 +87,7 @@ export default function Form({ auth, page_meta, page_data }) {
                         </div>
                         <div className="space-y-1">
                             <Label>Content</Label>
-                            <Textarea name="content" autoSize onChange={onChange} value={data.content} />
+                            <Editor value={data.content} onChange={(value) => setData('content', value)} />
                             <InputErrorMessage message={errors.content} />
                         </div>
                         <div className="grid grid-cols-2 gap-6">

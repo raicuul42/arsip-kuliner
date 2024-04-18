@@ -1,44 +1,70 @@
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Link, router, usePage } from '@inertiajs/react';
 import { Logo } from '@/components/logo';
-import { CoffeeIcon, HomeIcon, LayoutGridIcon, PowerIcon, Settings2Icon } from 'lucide-react';
+import {
+    IconHome,
+    IconHomeFill,
+    IconSketchbook,
+    IconSketchbookFill,
+    IconLogout,
+    IconGrid4,
+    IconGrid4Fill,
+    IconSearch,
+    IconHamburger,
+    IconSettings,
+    IconSettingsFill,
+} from '@irsyadadl/paranoid';
+import { CommandPalette } from '@/components/command-palette';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Container } from '@/components/container';
-import { IconHamburger } from '@irsyadadl/paranoid';
 import { useState, useEffect } from 'react';
 import { useScroll } from '@/hooks/use-scroll';
+import { Filter, FilterResponsive } from '@/components/filter';
 
 export function ResponsiveNav() {
     const { auth } = usePage().props;
     const [open, setOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
     const scroll = useScroll();
     useEffect(() => {
         return router.on('finish', () => {
             setOpen(false);
+            setSearchOpen(false);
         });
     }, []);
     return (
         <>
+            <CommandPalette open={searchOpen} setOpen={setSearchOpen} />
             <div className="pb-16 md:hidden"></div>
             <nav
                 className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all md:hidden ${scroll.y > 150 && scroll.y - scroll.lastY > 0 ? '-translate-y-full' : 'null'}`}
             >
                 <Container>
                     <ul className="flex items-center justify-between">
-                        <div className="flex">
-                            <Button variant="ghost" size="icon" onClick={() => setOpen(true)}>
-                                <IconHamburger className="size-6" />
-                            </Button>
-                        </div>
-                        <div className="flex">
-                            <Link href={route('home')}>
-                                <Logo className="size-6" />
-                            </Link>
-                        </div>
-                        <div className="flex">
+                        {auth.user ? (
+                            <div className="flex">
+                                <Button variant="ghost" size="icon" onClick={() => setOpen(true)}>
+                                    <IconHamburger className="size-6" />
+                                </Button>
+                            </div>
+                        ) : (
                             <ThemeToggle />
+                        )}
+
+                        <div className="flex">
+                            <Filter />
+                        </div>
+                        <div className="flex">
+                            <Button
+                                size="icon"
+                                className="size-8 rounded-full [&_svg]:size-5 [&_svg]:text-muted-foreground"
+                                variant="ghost"
+                                onClick={() => setSearchOpen(true)}
+                            >
+                                <IconSearch />
+                            </Button>
                         </div>
                     </ul>
                 </Container>
@@ -48,35 +74,52 @@ export function ResponsiveNav() {
                             <Logo className="size-6" />
                         </Link>
                         <div className="-mx-2">
-                            <NavLink active={route().current('home')} icon={HomeIcon} href={route('home')}>
+                            <NavLink
+                                key={'home'}
+                                active={route().current('home')}
+                                icon={IconHome}
+                                activeIcon={IconHomeFill}
+                                href={route('home')}
+                            >
                                 Home
                             </NavLink>
                             <NavLink
+                                key={'articles.index'}
                                 active={route().current('articles.index')}
-                                icon={CoffeeIcon}
+                                icon={IconSketchbook}
                                 href={route('articles.index')}
+                                activeIcon={IconSketchbookFill}
                             >
                                 Articles
                             </NavLink>
+
                             {auth.user ? (
                                 <>
                                     <NavLink
+                                        key={'internal-articles.index'}
+                                        icon={IconGrid4}
+                                        active={route().current('internal-articles.index')}
+                                        activeIcon={IconGrid4Fill}
+                                        href={route('internal-articles.index')}
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                    <NavLink
+                                        key={'profile.edit'}
+                                        icon={IconSettings}
                                         active={route().current('profile.edit')}
-                                        icon={Settings2Icon}
+                                        activeIcon={IconSettingsFill}
                                         href={route('profile.edit')}
                                     >
                                         Settings
                                     </NavLink>
-                                    <NavLink
-                                        icon={LayoutGridIcon}
-                                        active={route().current('internal-articles.index')}
-                                        href={route('internal-articles.index')}
-                                    >
-                                        List of Articles
-                                    </NavLink>
-                                    <NavLink icon={PowerIcon} href={route('logout')} method="post" as="button">
+                                    <NavLink icon={IconLogout} href={route('logout')} method="post" as="button">
                                         Logout
                                     </NavLink>
+
+                                    <div className="absolute bottom-6 left-6">
+                                        <ThemeToggle />
+                                    </div>
                                 </>
                             ) : null}
                         </div>
@@ -87,7 +130,7 @@ export function ResponsiveNav() {
     );
 }
 
-export function NavLink({ active, icon: Icon, ...props }) {
+export function NavLink({ active, icon: Icon, activeIcon: ActiveIcon, ...props }) {
     return (
         <Link
             className={cn(
@@ -96,7 +139,7 @@ export function NavLink({ active, icon: Icon, ...props }) {
             )}
             {...props}
         >
-            <Icon className="mr-2 h-4 w-4" />
+            {active ? <ActiveIcon className="mr-2 h-4 w-4" /> : <Icon className="mr-2 h-4 w-4" />}
             {props.children}
         </Link>
     );

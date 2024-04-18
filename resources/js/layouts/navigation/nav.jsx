@@ -45,25 +45,16 @@ export function Nav() {
                                 <NavLink active={route().current('articles.index')} href={route('articles.index')}>
                                     Articles
                                 </NavLink>
+                                <NavLink
+                                    active={route().current('category-list.index')}
+                                    href={route('category-list.index')}
+                                >
+                                    Categories
+                                </NavLink>
+                                <NavLink active={route().current('tag-list.index')} href={route('tag-list.index')}>
+                                    Tags
+                                </NavLink>
                                 <Filter />
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger
-                                        className={cn(
-                                            'group flex items-center p-4 text-sm text-muted-foreground transition duration-200 hover:text-foreground focus:outline-none',
-                                            'data-[state=open]:text-foreground',
-                                        )}
-                                    >
-                                        Categories
-                                        <IconChevronDown className="ml-2 size-4 duration-200 group-data-[state=open]:rotate-180" />
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent className="w-56">
-                                        {categories_g.map((category) => (
-                                            <DropdownMenuItem key={category.id} asChild>
-                                                <Link href={route('categories.show', [category])}>{category.name}</Link>
-                                            </DropdownMenuItem>
-                                        ))}
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
                             </div>
                             <div className="mx-4 h-8 w-px bg-foreground/45" />
                             <div className="flex items-center gap-x-7">
