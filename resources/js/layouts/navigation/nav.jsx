@@ -18,6 +18,7 @@ import { Label } from '@/components/ui/label';
 import { CommandPalette } from '@/components/command-palette';
 import { useState } from 'react';
 import { Filter } from '@/components/filter';
+import { NewLogo } from '@/components/logo-new';
 
 const navLinkClasses =
     'rounded-lg w-10/12 h-8 text-sm items-center font-medium tracking-tight text-muted-foreground hover:text-foreground inline-flex px-4 transition-colors duration-300';
@@ -34,7 +35,7 @@ export function Nav() {
                     <div className="flex items-center justify-between">
                         <div className="flex h-14 shrink-0 items-center">
                             <Link href="/" className="mr-4">
-                                <Logo className="size-8" />
+                                <NewLogo className="size-12" />
                             </Link>
                         </div>
                         <div className="flex items-center">

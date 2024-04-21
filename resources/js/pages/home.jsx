@@ -4,6 +4,7 @@ import { Head, Link } from '@inertiajs/react';
 import { ArticleCard } from '@/pages/articles/partials/article-card';
 import { CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetaTags } from '@/components/meta-tags';
+import { NewLogo } from '@/components/logo-new';
 
 export default function Home(props) {
     const { articles, popular_articles } = props;
@@ -102,7 +103,7 @@ function Hero() {
                             </span>
                         </Link>
                     </div>
-                    <h1 className="mt-10 text-4xl font-bold tracking-tight text-foreground sm:text-5xl/[3.5rem] md:text-6xl lg:text-7xl">
+                    <h1 className="mt-10 flex gap-10 text-4xl font-bold tracking-tight text-foreground sm:text-5xl/[3.5rem] md:text-6xl lg:text-7xl">
                         Arsip Kuliner
                     </h1>
                     <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-xl/[2rem] xl:text-2xl/[2.3rem]">
