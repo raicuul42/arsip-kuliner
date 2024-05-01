@@ -13,7 +13,7 @@ import { Container } from '@/components/container';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { IconChevronDown, IconSearch, IconSettings } from '@irsyadadl/paranoid';
+import { IconSearch, IconSettings } from '@irsyadadl/paranoid';
 import { Label } from '@/components/ui/label';
 import { CommandPalette } from '@/components/command-palette';
 import { useState } from 'react';
@@ -21,7 +21,7 @@ import { Filter } from '@/components/filter';
 import { NewLogo } from '@/components/logo-new';
 
 const navLinkClasses =
-    'rounded-lg w-10/12 h-8 text-sm items-center font-medium tracking-tight text-muted-foreground hover:text-foreground inline-flex px-4 transition-colors duration-300';
+    'rounded-lg h-8 text-sm items-center font-medium tracking-tight text-muted-foreground hover:text-foreground inline-flex px-4 transition-colors duration-300';
 
 export function Nav() {
     const { auth, categories_g } = usePage().props;
@@ -39,21 +39,21 @@ export function Nav() {
                             </Link>
                         </div>
                         <div className="flex items-center">
-                            <div className="flex items-center gap-x-2">
+                            <div className="flex items-center gap-x-5">
                                 <NavLink active={route().current('home')} href={route('home')}>
-                                    Home
+                                    Beranda
                                 </NavLink>
                                 <NavLink active={route().current('articles.index')} href={route('articles.index')}>
-                                    Articles
+                                    Arsip Masakan
                                 </NavLink>
                                 <NavLink
                                     active={route().current('category-list.index')}
                                     href={route('category-list.index')}
                                 >
-                                    Categories
+                                    Asal Daerah
                                 </NavLink>
                                 <NavLink active={route().current('tag-list.index')} href={route('tag-list.index')}>
-                                    Tags
+                                    Jenis Masakan
                                 </NavLink>
                                 <Filter />
                             </div>

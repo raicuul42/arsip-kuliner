@@ -28,7 +28,7 @@ export default function Index({ page_meta, ...props }) {
                         ))}
                     </div>
                 ) : (
-                    <p>No articles found.</p>
+                    <p>Tidak ada masakan yang ditemukan.</p>
                 )}
             </Container>
             {meta.has_pages && (

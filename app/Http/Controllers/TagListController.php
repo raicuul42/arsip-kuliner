@@ -38,8 +38,8 @@ class TagListController extends Controller
         return inertia('tag-list/index', [
             'tags' => fn () => $tags,
             'page_meta' => [
-                'title' => "Tags",
-                'description' => "All Tags from this app.",
+                'title' => "Jenis Masakan",
+                'description' => "Temukan ragam kuliner Indonesia berdasarkan jenis masakan.",
             ],
         ]);
     }

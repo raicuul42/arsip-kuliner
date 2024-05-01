@@ -37,8 +37,8 @@ class CategoryListController extends Controller implements HasMiddleware
         return inertia('category-list/index', [
             'categories' => fn () => $categories,
             'page_meta' => [
-                'title' => "Categories",
-                'description' => "All Categories from this app.",
+                'title' => "Asal Daerah",
+                'description' => "Cari dan temukan kuliner Indonesia berdasarkan provinsi-provinsi Indonesia di sini.",
             ],
         ]);
     }

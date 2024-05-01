@@ -40,13 +40,13 @@ class ArticleController extends Controller implements HasMiddleware
         abort_unless($articles->count(), 404);
 
         $pageMeta = [
-            'latest' => ['title' => $title = 'Latest Articles', 'description' => $description = 'The latest articles from our blog.'],
+            'latest' => ['title' => $title = 'Arsip Masakan', 'description' => $description = 'Jelajahi kekayaan kuliner Indonesia dari berbagai penjuru Nusantara.'],
             'trending' => ['title' => 'Trending Articles', 'description' => 'The most trending articles.'],
             'most-likes' => ['title' => 'Most Likes Article', 'description' => 'The most likes articles.'],
-            'year' => ['title' => 'Popular This Year', 'description' => 'The most popular articles of this year.'],
-            'month' => ['title' => 'Popular This Month', 'description' => 'The most popular articles of this month.'],
-            'week' => ['title' => 'Popular This Week', 'description' => 'The most popular articles of this week.'],
-            'all-time' => ['title' => 'Popular All Time', 'description' => 'The most popular articles of all time.'],
+            'year' => ['title' => 'Populer Tahun Ini', 'description' => 'Artikel paling populer tahun ini.'],
+            'month' => ['title' => 'Populer Bulan Ini', 'description' => 'Artikel paling populer bulan ini.'],
+            'week' => ['title' => 'Populer Minggu Ini', 'description' => 'Artikel paling populer minggu ini.'],
+            'all-time' => ['title' => 'Populer Sepanjang Masa', 'description' => 'Artikel paling populer sepanjang masa.'],
         ][$key] ?? ['title' => $title, 'description' => $description];
 
         return inertia('articles/index', [

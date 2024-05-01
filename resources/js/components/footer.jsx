@@ -1,5 +1,6 @@
 import { Logo } from '@/components/logo';
 import { filters } from '@/components/filter';
+import { NewLogo } from '@/components/logo-new';
 
 const navigation = {
     solutions: [
@@ -100,7 +101,7 @@ export function Footer() {
             <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                     <div className="space-y-8">
-                        <Logo />
+                        <NewLogo />
                         <p className="text-sm leading-6 text-muted-foreground">
                             Terhubung dengan kekayaan budaya Nusantara melalui aplikasi kami yang mempersembahkan lebih
                             dari sekadar resep masakan. Di sini, Anda akan menemukan cerita-cerita menarik, tips-tips
@@ -188,7 +189,7 @@ export function Footer() {
                 </div>
                 <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
                     <p className="text-xs leading-5 text-muted-foreground">
-                        &copy; 2020 Your Company, Inc. All rights reserved.
+                        &copy; 2024 Universitas Muhammadiyah Parepare. Arsip Kuliner.
                     </p>
                 </div>
             </div>
