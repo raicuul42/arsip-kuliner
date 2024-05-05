@@ -16,12 +16,8 @@ use League\CommonMark\Util\HtmlElement;
 class CalloutExtension implements ExtensionInterface, NodeRendererInterface
 {
    protected array $calloutTypes = [
-      'note' => [
-         'img' => '/callouts/info.svg',
-      ],
-      'warning' => [
-         'img' => '/callouts/warning.svg',
-      ],
+      'note' => ['img' => '/callouts/info.svg'],
+      'warning' => ['img' => '/callouts/warning.svg'],
    ];
 
    public function register(EnvironmentBuilderInterface $environment): void
@@ -32,21 +28,15 @@ class CalloutExtension implements ExtensionInterface, NodeRendererInterface
    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
    {
       assert($node instanceof BlockQuote);
-
       $calloutTypeNode = $this->calloutTypeNode($node);
-
       if (!$calloutTypeNode) {
          return null;
       }
-
       $type = $this->calloutType($calloutTypeNode);
-
       if (!$type) {
          return null;
       }
-
       $calloutTypeNode->detach();
-
       return new HtmlElement(
          'div',
          ['class' => 'not-prose mb-6 p-5 max-w-3xl lg:flex border bg-secondary/70 rounded-lg lg:rounded-xl'],
@@ -74,26 +64,20 @@ class CalloutExtension implements ExtensionInterface, NodeRendererInterface
    protected function calloutTypeNode(BlockQuote $blockQuote): ?Strong
    {
       $child = $blockQuote->firstChild();
-
       if (!$child instanceof Paragraph) {
          return null;
       }
-
       $child = $child->firstChild();
-
       return $child instanceof Strong ? $child : null;
    }
 
    protected function calloutType(Strong $node): ?string
    {
       $child = $node->firstChild();
-
       if (!$child instanceof Text) {
          return null;
       }
-
       $type = strtolower($child->getLiteral());
-
       return in_array($type, array_keys($this->calloutTypes)) ? $type : null;
    }
 }

@@ -40,7 +40,7 @@ class ArticleController extends Controller implements HasMiddleware
         abort_unless($articles->count(), 404);
 
         $pageMeta = [
-            'latest' => ['title' => $title = 'Arsip Masakan', 'description' => $description = 'Jelajahi kekayaan kuliner Indonesia dari berbagai penjuru Nusantara.'],
+            'latest' => ['title' => $title = 'Arsip Kuliner', 'description' => $description = 'Jelajahi kekayaan kuliner Indonesia dari berbagai penjuru Nusantara.'],
             'trending' => ['title' => 'Trending Articles', 'description' => 'The most trending articles.'],
             'most-likes' => ['title' => 'Most Likes Article', 'description' => 'The most likes articles.'],
             'year' => ['title' => 'Populer Tahun Ini', 'description' => 'Artikel paling populer tahun ini.'],

@@ -9,6 +9,7 @@
 .code-container > div {
     @apply p-0;
 }
+
 .prose .toc-sidebar h2 {
     @apply mb-2 text-lg font-semibold text-foreground;
 }
@@ -58,7 +59,7 @@
     font-size: inherit !important;
 }
 .prose h2 {
-    @apply mb-4 mt-8 text-[1.6rem] font-bold sm:text-3xl;
+    @apply mb-4 text-[1.6rem] font-bold sm:text-3xl;
 }
 .prose h3 {
     @apply mb-4 mt-8 text-[1.4rem] font-bold sm:text-2xl;
@@ -84,7 +85,7 @@
     @apply my-6 aspect-video h-auto w-full overflow-hidden rounded-lg focus:outline-none;
 }
 .tabbed-code {
-    @apply -mx-4 my-5 overflow-hidden border-y border-gray-800 bg-gray-950 sm:-mx-6 md:mx-0 md:rounded-md md:border-y-0 md:ring-1 md:ring-gray-800;
+    @apply my-5 overflow-hidden rounded-lg border border-y border-gray-800 bg-gray-950 sm:-mx-6 md:mx-0 md:rounded-md md:border-y-0 md:ring-1 md:ring-gray-800;
     .tabbed-code-nav {
         @apply hide-scroll flex gap-x-0.5 overflow-x-auto p-2;
         .tabbed-code-nav-button {
@@ -141,11 +142,11 @@
     }
 }
 .prose .code-container {
-    @apply relative -mx-4 mb-6 overflow-hidden border-y border-gray-700 bg-gray-950 ring-gray-700 dark:border-gray-800 sm:-mx-6 md:mx-0 md:rounded-lg md:border-y-0 md:ring-1 md:dark:ring-gray-800;
+    @apply relative mb-6 overflow-hidden rounded-lg border border-gray-700 bg-slate-900 ring-gray-700 dark:border-gray-800;
 }
 .prose .tabbed-code-body .code-container > div,
 .prose .code-container > div + div {
-    @apply p-0 md:max-h-[32rem] md:overflow-y-auto;
+    @apply pr-4 md:max-h-[32rem] md:overflow-y-auto;
 }
 .prose .code-container-filename {
     @apply flex items-center border-b border-gray-800 bg-gray-950 px-4 py-2 text-xs tracking-normal text-gray-300 sm:text-[0.850rem] lg:py-2.5;
@@ -168,6 +169,7 @@ pre code.hljs {
     padding: 0;
     background: transparent;
     font-family: 'Poppins', sans-serif;
+    line-height: 2;
 }
 code.hljs {
     padding: 3px 5px;

@@ -31,14 +31,14 @@ class TagListController extends Controller
             $self = Tag::query()
                 ->select(['id', 'name', 'slug', 'teaser', 'thumbnail'])
                 ->withCount('articles')
-                ->latest('updated_at')
-                ->paginate(9)
+                ->oldest('created_at')
+                ->paginate(12)
         )->additional(['meta' => ['has_pages' => $self->hasPages()]]);
 
         return inertia('tag-list/index', [
             'tags' => fn () => $tags,
             'page_meta' => [
-                'title' => "Jenis Masakan",
+                'title' => "Jenis Kuliner",
                 'description' => "Temukan ragam kuliner Indonesia berdasarkan jenis masakan.",
             ],
         ]);
@@ -49,22 +49,5 @@ class TagListController extends Controller
      */
     public function show(Tag $tag)
     {
-        $articles = Resources\ArticleBlockResource::collection($self = $tag->articles()
-            ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'thumbnail', 'teaser', 'published_at'])
-            ->with(['category:id,name,slug', 'user:id,name'])
-            ->where('status', \App\Enums\ArticleStatus::Published)
-            ->latest('published_at')
-            ->paginate(9))
-            ->additional([
-                'meta' => ['has_pages' => $self->hasPages()]
-            ]);
-
-        return inertia('articles/index', [
-            'articles' => fn () => $articles,
-            'page_meta' => [
-                'title' => $tag->name,
-                'description' => "All articles in the {$tag->name} tag.",
-            ],
-        ]);
     }
 }

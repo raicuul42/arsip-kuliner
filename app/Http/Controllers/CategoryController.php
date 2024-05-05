@@ -18,7 +18,7 @@ class CategoryController extends Controller
             $self = Category::query()
                 ->select(['id', 'name', 'slug'])
                 ->withCount('articles')
-                ->latest('updated_at')
+                ->orderBy('name', 'asc')
                 ->paginate(10)
         )->additional(['meta' => ['has_pages' => $self->hasPages()]]);
 
@@ -64,7 +64,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $articles = Resources\ArticleBlockResource::collection($self = $category->articles()
-            ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'teaser', 'published_at'])
+            ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'teaser', 'thumbnail', 'published_at'])
             ->with(['category:id,name,slug', 'user:id,name'])
             ->where('status', \App\Enums\ArticleStatus::Published)
             ->latest('published_at')
@@ -77,7 +77,7 @@ class CategoryController extends Controller
             'articles' => fn () => $articles,
             'page_meta' => [
                 'title' => $category->name,
-                'description' => "All articles in the {$category->name} category.",
+                'description' => $category->teaser,
             ],
         ]);
     }

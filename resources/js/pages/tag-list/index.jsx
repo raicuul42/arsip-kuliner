@@ -23,13 +23,13 @@ export default function Index({ page_meta, ...props }) {
 
             <Container>
                 {tags.length > 0 ? (
-                    <div className="grid gap-y-16 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
+                    <div className="grid gap-y-16 pt-8 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
                         {tags.map((tag) => (
                             <TagCard key={tag.id} tag={tag} />
                         ))}
                     </div>
                 ) : (
-                    <p>No tags found.</p>
+                    <p>Tidak ada jenis masakan yang ditemukan.</p>
                 )}
             </Container>
             {meta.has_pages && (

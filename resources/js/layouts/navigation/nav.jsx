@@ -44,16 +44,16 @@ export function Nav() {
                                     Beranda
                                 </NavLink>
                                 <NavLink active={route().current('articles.index')} href={route('articles.index')}>
-                                    Arsip Masakan
+                                    Arsip Kuliner
                                 </NavLink>
                                 <NavLink
                                     active={route().current('category-list.index')}
                                     href={route('category-list.index')}
                                 >
-                                    Asal Daerah
+                                    Daerah Kuliner
                                 </NavLink>
                                 <NavLink active={route().current('tag-list.index')} href={route('tag-list.index')}>
-                                    Jenis Masakan
+                                    Jenis Kuliner
                                 </NavLink>
                                 <Filter />
                             </div>

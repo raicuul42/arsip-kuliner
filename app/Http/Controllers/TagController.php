@@ -77,7 +77,7 @@ class TagController extends Controller
             'articles' => fn () => $articles,
             'page_meta' => [
                 'title' => $tag->name,
-                'description' => "All articles in the {$tag->name} tag.",
+                'description' => $tag->teaser,
             ],
         ]);
     }

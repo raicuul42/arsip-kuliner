@@ -23,9 +23,9 @@ export default function Show(props) {
                 image={article.thumbnail}
             />
             <Container>
-                <div className="flex flex-col-reverse items-start gap-y-16 lg:grid lg:grid-cols-3 lg:gap-x-16">
+                <div className="relative flex-col-reverse items-start gap-y-16 lg:grid lg:grid-cols-3 lg:gap-x-16">
                     <div className="space-y-12 lg:sticky lg:top-10 lg:col-span-1">
-                        <Author user={article.user} />
+                        {/* <Author user={article.user} /> */}
 
                         <TableOfContents articleId={article.id} />
 
@@ -46,7 +46,7 @@ export default function Show(props) {
 
                         <div className="flex items-center justify-between">
                             <div className="flex items-center text-sm text-muted-foreground">
-                                <time>{article.published_at}</time>
+                                <time>Masakan Nusantara</time>
                                 <span className="mx-2">|</span>
                                 <Link href={`/categories/${article.category.slug}`}>
                                     <Badge variant="default">{article.category.name}</Badge>

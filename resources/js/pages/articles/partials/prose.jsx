@@ -106,7 +106,7 @@ const CodeComponent = ({ children }) => {
     return (
         <div
             ref={containerRef}
-            className="prose max-w-3xl dark:prose-invert prose-headings:mb-2 prose-headings:font-bold prose-headings:tracking-tight prose-a:text-foreground prose-pre:m-0 prose-pre:rounded-none prose-pre:bg-transparent prose-pre:p-4 prose-pre:font-mono prose-thead:border-b-2 prose-thead:border-border/80 prose-tr:border-border/80 prose-img:rounded-none prose-img:ring-1 prose-img:ring-foreground/10 prose-hr:h-px prose-hr:border-0 prose-hr:bg-gradient-to-r prose-hr:from-accent/50 prose-hr:via-accent prose-hr:to-accent/50 md:prose-img:rounded-lg lg:prose-pre:px-5 lg:prose-pre:pb-4 [&>h2>a]:scroll-mt-8 [&>h3>a]:scroll-mt-8 [&>h4>a]:scroll-mt-8"
+            className="prose prose-cyan max-w-3xl text-justify dark:prose-invert prose-headings:mb-2 prose-headings:font-bold prose-headings:tracking-tight prose-a:text-foreground prose-pre:m-0 prose-pre:rounded-none prose-pre:bg-transparent prose-pre:p-4 prose-pre:font-mono prose-thead:border-b-2 prose-thead:border-border/80 prose-tr:border-border/80 prose-img:rounded-none prose-img:ring-1 prose-img:ring-foreground/10 prose-hr:h-px prose-hr:border-0 prose-hr:bg-gradient-to-r prose-hr:from-accent/50 prose-hr:via-accent prose-hr:to-accent/50 md:prose-img:rounded-lg lg:prose-pre:px-5 lg:prose-pre:pb-4 [&>h2>a]:scroll-mt-8 [&>h3>a]:scroll-mt-8 [&>h4>a]:scroll-mt-8"
             dangerouslySetInnerHTML={{ __html: children }}
         />
     );

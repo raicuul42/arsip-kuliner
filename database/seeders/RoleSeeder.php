@@ -14,7 +14,7 @@ class RoleSeeder extends Seeder
         User::create([
             'name' => 'Raisul Amin R',
             'email' => 'me@arsipkuliner.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('ArdeEL162530'),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ])->assignRole(Role::create([

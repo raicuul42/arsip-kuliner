@@ -104,11 +104,13 @@ export default function Form({ auth, page_meta, page_data }) {
                                         </SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
-                                        {page_data.categories.map((category) => (
-                                            <SelectItem key={category.value} value={category.value}>
-                                                {category.label}
-                                            </SelectItem>
-                                        ))}
+                                        {page_data.categories
+                                            .sort((a, b) => a.label.localeCompare(b.label))
+                                            .map((category) => (
+                                                <SelectItem key={category.value} value={category.value}>
+                                                    {category.label}
+                                                </SelectItem>
+                                            ))}
                                     </SelectContent>
                                 </Select>
                                 <InputErrorMessage message={errors.category_id} />

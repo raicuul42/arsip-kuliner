@@ -36,8 +36,8 @@ export default function Home(props) {
                     </section>
                     <section id="latest">
                         <CardHeader className="mb-6 p-0">
-                            <CardTitle>Arsip Masakan</CardTitle>
-                            <CardDescription>Kumpulan masakan nusantara dari aplikasi kami</CardDescription>
+                            <CardTitle>Arsip Kuliner</CardTitle>
+                            <CardDescription>Kumpulan kuliner nusantara dari aplikasi kami</CardDescription>
                         </CardHeader>
                         {articles.length > 0 ? (
                             <div className="grid gap-x-12 gap-y-16 lg:grid-cols-3">

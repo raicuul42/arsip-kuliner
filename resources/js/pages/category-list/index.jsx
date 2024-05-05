@@ -23,13 +23,13 @@ export default function Index({ page_meta, ...props }) {
 
             <Container>
                 {categories.length > 0 ? (
-                    <div className="grid gap-y-16 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
+                    <div className="grid gap-y-16 pt-8 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
                         {categories.map((category) => (
                             <CategoryCard key={category.id} category={category} />
                         ))}
                     </div>
                 ) : (
-                    <p>No categories found.</p>
+                    <p>Tidak ada provinsi yang ditemukan.</p>
                 )}
             </Container>
             {meta.has_pages && (

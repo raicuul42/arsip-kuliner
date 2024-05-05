@@ -11,7 +11,7 @@ export default function Index({ page_meta, ...props }) {
         <>
             <Head title={page_meta.title} />
             <MetaTags title={page_meta.title} description={page_meta.description} url={route('articles.index')} />
-            <div className="-mt-6 mb-1 border-b bg-background py-6 sm:-mt-16 md:py-16">
+            <div className="-mt-6 border-b bg-background py-6 sm:-mt-16 md:py-16">
                 <Container>
                     <h1 className="text-2xl font-semibold leading-none tracking-tight md:text-3xl">
                         {page_meta.title}
@@ -22,7 +22,7 @@ export default function Index({ page_meta, ...props }) {
 
             <Container>
                 {articles.length > 0 ? (
-                    <div className="grid gap-y-16 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
+                    <div className="grid gap-y-16 pt-8 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-3 lg:py-24">
                         {articles.map((article) => (
                             <ArticleCard key={article.id} article={article} />
                         ))}
