@@ -1,4 +1,5 @@
 import { Logo } from '@/components/logo';
+import { NewLogo } from '@/components/logo-new';
 import { Link } from '@inertiajs/react';
 
 export function GuestLayout({ children }) {
@@ -7,7 +8,7 @@ export function GuestLayout({ children }) {
         <div className="flex items-center justify-center sm:min-h-screen">
             <div className="w-full max-w-lg py-6">
                 <Link href="/" className="mb-6 flex items-center justify-center gap-x-2">
-                    <Logo className="size-10" />
+                    <NewLogo className="size-10" />
                     <span className="sr-only">Go to {appName} (Home)</span>
                 </Link>
                 {children}

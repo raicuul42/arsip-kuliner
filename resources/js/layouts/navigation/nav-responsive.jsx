@@ -22,6 +22,7 @@ import { Container } from '@/components/container';
 import { useState, useEffect } from 'react';
 import { useScroll } from '@/hooks/use-scroll';
 import { Filter, FilterResponsive } from '@/components/filter';
+import { NewLogo } from '@/components/logo-new';
 
 export function ResponsiveNav() {
     const { auth } = usePage().props;
@@ -71,7 +72,7 @@ export function ResponsiveNav() {
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetContent side="left" className="w-3/5">
                         <Link href="/" className="mr-4">
-                            <Logo className="size-6" />
+                            <NewLogo className="size-6" />
                         </Link>
                         <div className="-mx-2">
                             <NavLink

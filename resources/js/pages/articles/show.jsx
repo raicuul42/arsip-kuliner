@@ -48,7 +48,7 @@ export default function Show(props) {
                             <div className="flex items-center text-sm text-muted-foreground">
                                 <time>Masakan Nusantara</time>
                                 <span className="mx-2">|</span>
-                                <Link href={`/categories/${article.category.slug}`}>
+                                <Link href={route('categories.show', [article.category])}>
                                     <Badge variant="default">{article.category.name}</Badge>
                                 </Link>
                                 <span className="mx-2">|</span>
