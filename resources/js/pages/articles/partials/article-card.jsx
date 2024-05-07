@@ -32,7 +32,7 @@ export function ArticleCard({ article }) {
 
             <p className="text-sm text-muted-foreground">{article.teaser}</p>
             <div className="flex items-center justify-end text-sm text-muted-foreground">
-                <time>{article.published_at}</time>
+                <span>Masakan Nusantara</span>
             </div>
         </article>
     );

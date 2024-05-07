@@ -59,7 +59,7 @@ export function TableOfContents({ articleId }) {
 
     return (
         <aside className="hidden rounded-lg border bg-background p-4 lg:block">
-            <h3 className="mb-2 text-lg font-semibold tracking-tight">Apa yang ada dihalaman ini ?</h3>
+            <h3 className="mb-2 text-lg font-semibold tracking-tight">Apa Yang Ada di Halaman Ini ?</h3>
             <div className="txteadf max-h-96 overflow-y-auto">
                 <ul className="flex flex-col gap-y-4">
                     {headings.map((heading, index) => (

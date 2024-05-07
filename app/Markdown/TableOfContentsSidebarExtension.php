@@ -32,7 +32,7 @@ class TableOfContentsSidebarExtension implements ExtensionInterface, NodeRendere
             'div',
             ['class' => 'toc not-prose'],
             [
-               new HtmlElement('h2', [], 'On this page'),
+               new HtmlElement('h2', [], 'Di halaman ini'),
                $render->render($node, $childRenderer),
             ],
          )
