@@ -19,7 +19,7 @@ export function UserLayout({ title, children }) {
                 <Container>
                     <div className="flex flex-col items-start gap-6 lg:flex-row lg:gap-12">
                         <Aside />
-                        <div className="w-full lg:w-4/5">{children}</div>
+                        <div className="mb-20 w-full lg:mb-4 lg:w-4/5">{children}</div>
                     </div>
                 </Container>
             </main>
