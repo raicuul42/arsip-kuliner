@@ -30,7 +30,7 @@ export function Nav() {
     return (
         <>
             <CommandPalette open={open} setOpen={setOpen} />
-            <nav className="hidden border-b bg-transparent py-2 font-medium md:block">
+            <nav className="hidden border-b bg-transparent py-2 font-medium lg:block">
                 <Container>
                     <div className="flex items-center justify-between">
                         <div className="flex h-14 shrink-0 items-center">

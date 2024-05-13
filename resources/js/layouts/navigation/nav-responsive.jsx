@@ -38,9 +38,9 @@ export function ResponsiveNav() {
     return (
         <>
             <CommandPalette open={searchOpen} setOpen={setSearchOpen} />
-            <div className="pb-16 md:hidden"></div>
+            <div className="pb-16 lg:hidden"></div>
             <nav
-                className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all md:hidden ${scroll.y > 150 && scroll.y - scroll.lastY > 0 ? '-translate-y-full' : 'null'}`}
+                className={`fixed top-0 z-40 w-full border-b bg-background/70 py-2 backdrop-blur-lg transition-all lg:hidden ${scroll.y > 150 && scroll.y - scroll.lastY > 0 ? '-translate-y-full' : 'null'}`}
             >
                 <Container>
                     <ul className="flex items-center justify-between">

@@ -22,7 +22,7 @@ export function BottomBar() {
     return (
         <>
             <CommandPalette open={open} setOpen={setOpen} />
-            <nav className="fixed bottom-0 z-50 w-full border-t border-foreground/10 bg-background/80 px-4 backdrop-blur-lg md:hidden">
+            <nav className="fixed bottom-0 z-50 w-full border-t border-foreground/10 bg-background/80 px-4 backdrop-blur-lg lg:hidden">
                 <ul className="flex w-full items-center justify-between gap-x-2">
                     <NavButton
                         key={'home'}
@@ -31,7 +31,7 @@ export function BottomBar() {
                         href={route('home')}
                         activeIcon={IconHomeFill}
                     >
-                        Home
+                        Beranda
                     </NavButton>
                     <NavButton
                         key={'articles.index'}
@@ -40,7 +40,7 @@ export function BottomBar() {
                         href={route('articles.index')}
                         activeIcon={IconSketchbookFill}
                     >
-                        Articles
+                        Arsip
                     </NavButton>
                     <NavButton
                         key={'category-list.index'}
@@ -49,7 +49,7 @@ export function BottomBar() {
                         activeIcon={IconListBulletsFill}
                         href={route('category-list.index')}
                     >
-                        Categories
+                        Daerah
                     </NavButton>
                     <NavButton
                         key={'tag-list.index'}
@@ -58,7 +58,7 @@ export function BottomBar() {
                         activeIcon={IconPriceTagFill}
                         href={route('tag-list.index')}
                     >
-                        Tags
+                        Jenis
                     </NavButton>
                     {auth.user ? (
                         <>
