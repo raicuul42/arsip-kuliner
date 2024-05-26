@@ -50,7 +50,7 @@ class InternalArticleController extends Controller implements HasMiddleware
                 'has_pages' => $self->hasPages(),
                 'total_visits' => $totalVisits,
                 'unpublished_count' => Models\Article::query()
-                    ->where('status', '!=', 'published')
+                    ->where('status', '!=', 'Diterbitkan')
                     ->when(!$request->user()->hasRole('admin'), fn ($query) => $query->whereBelongsTo($request->user()))
                     ->count(),
             ],
@@ -75,8 +75,8 @@ class InternalArticleController extends Controller implements HasMiddleware
                 'statuses' => fn () => ArticleStatus::toSelectArray(),
             ],
             'page_meta' => [
-                'title' => 'Create Article',
-                'description' => 'Create a new article by filling out the form below.',
+                'title' => 'Tambah Kuliner Baru',
+                'description' => 'Tambah kuliner baru di bawah ini.',
                 'url' => route('internal-articles.store'),
                 'method' => 'post',
             ],
@@ -92,14 +92,14 @@ class InternalArticleController extends Controller implements HasMiddleware
         unset($validatedData['tags']);
         $article = $request->user()->articles()->create([
             ...$validatedData,
-            'status' => $request->user()->hasRole('admin') ? $request->status : ArticleStatus::Pending,
+            'status' => $request->user()->hasRole('admin') ? $request->status : ArticleStatus::Ditunda,
             'thumbnail' => $request->file('thumbnail') ? $request->file('thumbnail')->store('thumbnails', 'public') : '',
-            'published_at' => $request->enum('status', ArticleStatus::class) === ArticleStatus::Published ? now() : null,
+            'published_at' => $request->enum('status', ArticleStatus::class) === ArticleStatus::Diterbitkan ? now() : null,
         ]);
 
         $article->tags()->sync($request->tags);
 
-        flashMessage('Article created successfully.');
+        flashMessage('Kuliner berhasil Tambahkan.');
 
         return redirect()->route('internal-articles.index');
     }
@@ -117,8 +117,8 @@ class InternalArticleController extends Controller implements HasMiddleware
                 'statuses' => fn () => ArticleStatus::toSelectArray(),
             ],
             'page_meta' => [
-                'title' => 'Edit Article',
-                'description' => "Edit the article titled '{$article->title}'.",
+                'title' => 'Edit Kuliner',
+                'description' => "Edit kuliner yang berjudul '{$article->title}'.",
                 'url' => route('internal-articles.update', $article),
                 'method' => 'put',
             ],
@@ -136,12 +136,12 @@ class InternalArticleController extends Controller implements HasMiddleware
             ...$validatedData,
             'status' => $request->enum('status', ArticleStatus::class),
             'thumbnail' => $request->file('thumbnail') ? $request->file('thumbnail')->store('thumbnails', 'public') : '',
-            'published_at' => $request->enum('status', ArticleStatus::class) === ArticleStatus::Published ? now() : null,
+            'published_at' => $request->enum('status', ArticleStatus::class) === ArticleStatus::Diterbitkan ? now() : null,
         ]);
 
         $article->tags()->sync($request->tags);
 
-        flashMessage('Article updated successfully.');
+        flashMessage('Kuliner berhasil diubah.');
 
 
         return redirect()->route('internal-articles.index');
@@ -154,7 +154,7 @@ class InternalArticleController extends Controller implements HasMiddleware
     {
         $article->delete();
 
-        flashMessage('Article deleted successfully.');
+        flashMessage('Kuliner berhasil dihapus.');
 
         return redirect()->route('internal-articles.index');
     }
@@ -162,14 +162,14 @@ class InternalArticleController extends Controller implements HasMiddleware
     public function approve(Models\Article $article)
     {
         $article->update([
-            'status' => $article->status === ArticleStatus::Published ? ArticleStatus::Pending : ArticleStatus::Published,
-            'published_at' => $article->status === ArticleStatus::Published ? null : now(),
+            'status' => $article->status === ArticleStatus::Diterbitkan ? ArticleStatus::Pending : ArticleStatus::Diterbitkan,
+            'published_at' => $article->status === ArticleStatus::Diterbitkan ? null : now(),
         ]);
 
-        if ($article->status === ArticleStatus::Published) {
-            flashMessage('Article published successfully.');
+        if ($article->status === ArticleStatus::Diterbitkan) {
+            flashMessage('Kuliner berhasil diterbitkan.');
         } else {
-            flashMessage('Article unpublished successfully.');
+            flashMessage('Kuliner berhasil ditunda.');
         }
 
         return redirect()->route('internal-articles.index');

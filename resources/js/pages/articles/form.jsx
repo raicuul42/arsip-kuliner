@@ -76,7 +76,7 @@ export default function Form({ auth, page_meta, page_data }) {
                             <InputErrorMessage message={errors.thumbnail} />
                         </div>
                         <div className="space-y-1">
-                            <Label>Title</Label>
+                            <Label>Nama Masakan</Label>
                             <Input name="title" onChange={onChange} value={data.title} />
                             <InputErrorMessage message={errors.title} />
                         </div>
@@ -86,21 +86,21 @@ export default function Form({ auth, page_meta, page_data }) {
                             <InputErrorMessage message={errors.teaser} />
                         </div>
                         <div className="space-y-1">
-                            <Label>Content</Label>
+                            <Label>Isi</Label>
                             <Editor value={data.content} onChange={(value) => setData('content', value)} />
                             <InputErrorMessage message={errors.content} />
                         </div>
                         <div className="grid grid-cols-2 gap-6">
                             <div className="space-y-1">
-                                <Label>Category</Label>
+                                <Label>Daerah Kuliner</Label>
                                 <Select
                                     defaultValue={data.category_id}
                                     onValueChange={(value) => setData('category_id', value)}
                                 >
                                     <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select category">
+                                        <SelectValue placeholder="Pilih daerah kuliner">
                                             {page_data.categories.find((category) => category.value == data.category_id)
-                                                ?.label ?? 'Select a status'}
+                                                ?.label ?? 'Pilih status'}
                                         </SelectValue>
                                     </SelectTrigger>
                                     <SelectContent>
@@ -125,7 +125,7 @@ export default function Form({ auth, page_meta, page_data }) {
                                         <SelectTrigger className="mt-1 capitalize">
                                             <SelectValue>
                                                 {page_data.statuses.find((status) => status.value == data.status)
-                                                    ?.label ?? 'Select a status'}
+                                                    ?.label ?? 'Pilih status'}
                                             </SelectValue>
                                         </SelectTrigger>
                                         <SelectContent>
@@ -146,13 +146,13 @@ export default function Form({ auth, page_meta, page_data }) {
                             )}
                         </div>
                         <div className="space-y-1">
-                            <Label>Tags</Label>
+                            <Label>Jenis Kuliner</Label>
                             <MultiSelect
                                 max={3}
                                 items={page_data.tags}
                                 selected={selected}
                                 setSelected={setSelected}
-                                placeholder="Select tags..."
+                                placeholder="Pilih jenis kuliner..."
                             />
                             <InputErrorMessage message={errors.tags} />
                         </div>
@@ -160,7 +160,7 @@ export default function Form({ auth, page_meta, page_data }) {
                 </CardContent>
                 <CardFooter>
                     <Button disabled={processing} type="submit">
-                        Save
+                        Simpan
                     </Button>
                 </CardFooter>
             </form>

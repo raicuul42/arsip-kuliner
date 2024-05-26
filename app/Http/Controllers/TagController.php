@@ -35,8 +35,8 @@ class TagController extends Controller
         return inertia('tags/form', [
             'tag' => new Tag,
             'page_meta' => [
-                'title' => 'Create Tag',
-                'description' => 'Create a new tag for your articles.',
+                'title' => 'Tambah Jenis Kuliner',
+                'description' => 'Tambah jenis kuliner baru di bawah ini.',
                 'url' => route('tags.store'),
                 'method' => 'post',
             ],
@@ -66,7 +66,7 @@ class TagController extends Controller
         $articles = Resources\ArticleBlockResource::collection($self = $tag->articles()
             ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'thumbnail', 'teaser', 'published_at'])
             ->with(['category:id,name,slug', 'user:id,name'])
-            ->where('status', \App\Enums\ArticleStatus::Published)
+            ->where('status', \App\Enums\ArticleStatus::Diterbitkan)
             ->latest('published_at')
             ->paginate(9))
             ->additional([
@@ -90,8 +90,8 @@ class TagController extends Controller
         return inertia('tags/form', [
             'tag' => $tag,
             'page_meta' => [
-                'title' => 'Edit Tag',
-                'description' => 'Edit the tag details below.',
+                'title' => 'Edit Jenis Kuliner',
+                'description' => 'Edit jenis kuliner dibawah ini.',
                 'url' => route('tags.update', $tag),
                 'method' => 'put',
             ],

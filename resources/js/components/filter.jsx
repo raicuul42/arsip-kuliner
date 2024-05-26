@@ -13,23 +13,23 @@ import { IconChevronDown, IconFilter, IconFilterFill } from '@irsyadadl/paranoid
 
 export const filters = [
     {
-        name: 'Popular this week',
+        name: 'Populer minggu ini',
         href: '/articles/week',
     },
     {
-        name: 'Popular this month',
+        name: 'Populer bulan ini',
         href: '/articles/month',
     },
     {
-        name: 'Popular this year',
+        name: 'Populer tahun ini',
         href: '/articles/year',
     },
     {
-        name: 'Popular this all time',
+        name: 'Populer sepanjang masa',
         href: '/articles/all-time',
     },
     {
-        name: 'Latest',
+        name: 'Terbaru',
         href: '/articles',
     },
 ];

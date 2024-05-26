@@ -29,7 +29,7 @@ class ArticleController extends Controller implements HasMiddleware
         $articles = Article::query()
             ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'thumbnail', 'teaser', 'status', 'published_at'])
             ->with('category:id,name,slug', 'user:id,name')
-            ->where('status', ArticleStatus::Published)
+            ->where('status', ArticleStatus::Diterbitkan)
             ->when($key === 'latest', fn ($query) => $query->latest('published_at'))
             ->when($key === 'year', fn ($query) => $query->popularThisYear())
             ->when($key === 'month', fn ($query) => $query->popularThisMonth())
@@ -43,10 +43,10 @@ class ArticleController extends Controller implements HasMiddleware
             'latest' => ['title' => $title = 'Arsip Kuliner', 'description' => $description = 'Jelajahi kekayaan kuliner Indonesia dari berbagai penjuru Nusantara.'],
             'trending' => ['title' => 'Trending Articles', 'description' => 'The most trending articles.'],
             'most-likes' => ['title' => 'Most Likes Article', 'description' => 'The most likes articles.'],
-            'year' => ['title' => 'Populer Tahun Ini', 'description' => 'Artikel paling populer tahun ini.'],
-            'month' => ['title' => 'Populer Bulan Ini', 'description' => 'Artikel paling populer bulan ini.'],
-            'week' => ['title' => 'Populer Minggu Ini', 'description' => 'Artikel paling populer minggu ini.'],
-            'all-time' => ['title' => 'Populer Sepanjang Masa', 'description' => 'Artikel paling populer sepanjang masa.'],
+            'year' => ['title' => 'Populer Tahun Ini', 'description' => 'Artikel populer tahun ini.'],
+            'month' => ['title' => 'Populer Bulan Ini', 'description' => 'Artikel populer bulan ini.'],
+            'week' => ['title' => 'Populer Minggu Ini', 'description' => 'Artikel populer minggu ini.'],
+            'all-time' => ['title' => 'Populer Sepanjang Masa', 'description' => 'Artikel populer sepanjang masa.'],
         ][$key] ?? ['title' => $title, 'description' => $description];
 
         return inertia('articles/index', [
@@ -80,7 +80,7 @@ class ArticleController extends Controller implements HasMiddleware
         return Article::query()
             ->select('id', 'title', 'slug')
             ->where('title', 'like', "%{$request->search}%")
-            ->whereStatus(ArticleStatus::Published)
+            ->whereStatus(ArticleStatus::Diterbitkan)
             ->get()
             ->map(fn ($article) => [
                 'id' => $article->id,

@@ -40,7 +40,7 @@ export default function Form(props) {
                             <InputErrorMessage message={errors.thumbnail} />
                         </div>
                         <div className="space-y-1">
-                            <Label htmlFor="name">Name</Label>
+                            <Label htmlFor="name">Nama Daerah</Label>
                             <Input
                                 label="Name"
                                 name="name"
@@ -60,7 +60,7 @@ export default function Form(props) {
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button disabled={processing}>Save</Button>
+                    <Button disabled={processing}>Simpan</Button>
                 </CardFooter>
             </form>
         </Card>

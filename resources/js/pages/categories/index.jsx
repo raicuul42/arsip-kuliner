@@ -21,13 +21,13 @@ export default function Index(props) {
         <Card>
             <div className="flex flex-col justify-between gap-y-6 p-6 md:flex-row md:items-center md:gap-y-0">
                 <CardHeader className="p-0">
-                    <CardTitle>Categories List</CardTitle>
-                    <CardDescription>{meta.total} categories found on this application.</CardDescription>
+                    <CardTitle>Daftar Daerah Kuliner</CardTitle>
+                    <CardDescription>{meta.total} daerah kuliner ditemukan pada aplikasi</CardDescription>
                 </CardHeader>
                 <Button asChild>
                     <Link href={route('categories.create')}>
                         <IconCirclePlusFill className="mr-2 size-4" />
-                        New
+                        Tambah
                     </Link>
                 </Button>
             </div>
@@ -38,7 +38,7 @@ export default function Index(props) {
                             <TableHead>#</TableHead>
                             <TableHead>Name</TableHead>
                             <TableHead>Slug</TableHead>
-                            <TableHead>Articles</TableHead>
+                            <TableHead>Masakan</TableHead>
                             <TableHead />
                         </TableRow>
                     </TableHeader>
@@ -67,11 +67,11 @@ export default function Index(props) {
                                                     <AlertAction
                                                         trigger={
                                                             <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                                                                Delete
+                                                                Hapus
                                                             </DropdownMenuItem>
                                                         }
-                                                        title="Delete Category"
-                                                        description="Are you sure you want to delete this category?"
+                                                        title="Hapus Daerah Kuliner"
+                                                        description="Apakah anda yakin ingin menghapus daerah kuliner ini?"
                                                         action={() =>
                                                             router.delete(route('categories.destroy', [category]), {
                                                                 preserveScroll: true,
@@ -121,4 +121,4 @@ export default function Index(props) {
     );
 }
 
-Index.layout = (page) => <UserLayout title="Categories" children={page} />;
+Index.layout = (page) => <UserLayout title="Daerah Kuliner" children={page} />;

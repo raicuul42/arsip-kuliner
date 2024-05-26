@@ -4,10 +4,10 @@ namespace App\Enums;
 
 enum ArticleStatus: string
 {
-    case Draft = 'draft';
-    case Pending = 'pending';
-    case Published = 'published';
-    case Archived = 'archived';
+    case Dirancang = 'Dirancang';
+    case Ditunda = 'Ditunda';
+    case Diterbitkan = 'Diterbitkan';
+    case Diarsipkan = 'Diarsipkan';
 
     public static function toSelectArray(): array
     {

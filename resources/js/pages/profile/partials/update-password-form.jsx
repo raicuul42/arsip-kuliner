@@ -37,14 +37,16 @@ export function UpdatePasswordForm() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Update Password</CardTitle>
-                <CardDescription>Ensure your account is using a long, random password to stay secure.</CardDescription>
+                <CardTitle>Perbarui Kata Sandi</CardTitle>
+                <CardDescription>
+                    Pastikan akun Anda menggunakan kata sandi yang panjang dan acak agar tetap aman.
+                </CardDescription>
             </CardHeader>
 
             <CardContent>
                 <form onSubmit={submit} className="space-y-6">
                     <div>
-                        <Label htmlFor="current_password">Current Password</Label>
+                        <Label htmlFor="current_password">Kata Sandi Saat Ini</Label>
 
                         <Input
                             id="current_password"
@@ -61,7 +63,7 @@ export function UpdatePasswordForm() {
                     </div>
 
                     <div>
-                        <Label htmlFor="password">New Password</Label>
+                        <Label htmlFor="password">Password Baru</Label>
 
                         <Input
                             id="password"
@@ -78,7 +80,7 @@ export function UpdatePasswordForm() {
                     </div>
 
                     <div>
-                        <Label htmlFor="password_confirmation">Confirm Password</Label>
+                        <Label htmlFor="password_confirmation">Konfirmasi Kata Sandi</Label>
 
                         <Input
                             id="password_confirmation"
@@ -94,8 +96,8 @@ export function UpdatePasswordForm() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <Button disabled={processing}>Save</Button>
-                        {recentlySuccessful && <p className="text-sm text-muted-foreground">Saved.</p>}
+                        <Button disabled={processing}>Simpan</Button>
+                        {recentlySuccessful && <p className="text-sm text-muted-foreground">Terimpan.</p>}
                     </div>
                 </form>
             </CardContent>

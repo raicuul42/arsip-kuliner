@@ -43,33 +43,33 @@ export default function List({ auth, ...props }) {
                 <Card>
                     <CardHeader>
                         <CardTitle>{meta.total}</CardTitle>
-                        <CardDescription>Total Articles</CardDescription>
+                        <CardDescription>Total Masakan</CardDescription>
                     </CardHeader>
                 </Card>
                 <Card>
                     <CardHeader>
                         <CardTitle>{meta.total_visits}</CardTitle>
-                        <CardDescription>Total Visits</CardDescription>
+                        <CardDescription>Total Kunjungan</CardDescription>
                     </CardHeader>
                 </Card>
                 <Card>
                     <CardHeader>
                         <CardTitle>{meta.unpublished_count}</CardTitle>
-                        <CardDescription>Unpublished Articles</CardDescription>
+                        <CardDescription>Masakan Yang Belum Diterbitkan</CardDescription>
                     </CardHeader>
                 </Card>
             </div>
             <Card>
                 <div className="flex flex-col justify-between gap-y-6 p-6 md:flex-row md:items-center md:gap-y-0">
                     <CardHeader className="p-0">
-                        <CardTitle>Articles List</CardTitle>
-                        <CardDescription>{meta.total} articles found on this application.</CardDescription>
+                        <CardTitle>Daftar Masakan</CardTitle>
+                        <CardDescription>{meta.total} masakan yang terdapat pada aplikasi</CardDescription>
                     </CardHeader>
                     <div className="flex max-w-md flex-col gap-2 md:flex-row">
                         <Input
                             value={params?.search}
                             onChange={(e) => setParams((prev) => ({ ...prev, search: e.target.value }))}
-                            placeholder="Search..."
+                            placeholder="Cari..."
                         />
                         <div className="grid grid-cols-2 gap-x-2 md:flex">
                             <Select value={params?.status} onValueChange={(e) => setParams({ ...params, status: e })}>
@@ -77,15 +77,15 @@ export default function List({ auth, ...props }) {
                                     <SelectValue placeholder={params?.status ?? 'Status'} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="draft">Draft</SelectItem>
-                                    <SelectItem value="pending">Pending</SelectItem>
-                                    <SelectItem value="published">Published</SelectItem>
+                                    <SelectItem value="Arspikan">Diarsipkan</SelectItem>
+                                    <SelectItem value="Ditunda">Ditunda</SelectItem>
+                                    <SelectItem value="Diterbitkan">Diterbitkan</SelectItem>
                                 </SelectContent>
                             </Select>
                             <Button asChild>
                                 <Link href={route('internal-articles.create')}>
                                     <IconCirclePlusFill className="mr-2 size-4" />
-                                    New
+                                    Tambah
                                 </Link>
                             </Button>
                         </div>
@@ -96,11 +96,11 @@ export default function List({ auth, ...props }) {
                         <TableHeader>
                             <TableRow>
                                 <TableHead>#</TableHead>
-                                <TableHead>Title</TableHead>
-                                {auth.user.is_admin && <TableHead>Author</TableHead>}
+                                <TableHead>Nama Masakan</TableHead>
+                                {auth.user.is_admin && <TableHead>Penulis</TableHead>}
                                 <TableHead>Status</TableHead>
-                                <TableHead>Created At</TableHead>
-                                <TableHead>Published At</TableHead>
+                                <TableHead>Dibuat pada</TableHead>
+                                <TableHead>Diterbitkan pada</TableHead>
                                 <TableHead />
                             </TableRow>
                         </TableHeader>
@@ -115,7 +115,7 @@ export default function List({ auth, ...props }) {
                                     </TableCell>
                                     {auth.user.is_admin && <TableCell>{article.user?.name}</TableCell>}
                                     <TableCell>
-                                        <Badge variant={article.status === 'published' ? 'default' : 'outline'}>
+                                        <Badge variant={article.status === 'Diterbitkan' ? 'default' : 'outline'}>
                                             {article.status}
                                         </Badge>
                                     </TableCell>
@@ -128,7 +128,7 @@ export default function List({ auth, ...props }) {
                                                     <IconDotsVertical className="size-4" />
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align="end" className="w-48">
-                                                    <DropdownMenuLabel>Article ID: {article.id}</DropdownMenuLabel>
+                                                    <DropdownMenuLabel>ID Masakan: {article.id}</DropdownMenuLabel>
                                                     <DropdownMenuSeparator />
                                                     <DropdownMenuItem asChild>
                                                         <Link href={route('internal-articles.edit', [article])}>
@@ -142,20 +142,20 @@ export default function List({ auth, ...props }) {
                                                                     <DropdownMenuItem
                                                                         onSelect={(e) => e.preventDefault()}
                                                                     >
-                                                                        {article.status !== 'published'
-                                                                            ? 'Publish'
-                                                                            : 'Unpublished'}
+                                                                        {article.status !== 'Diterbitkan'
+                                                                            ? 'Diterbitkan'
+                                                                            : 'Belum Diterbitkan'}
                                                                     </DropdownMenuItem>
                                                                 }
                                                                 title={
-                                                                    article.status !== 'published'
-                                                                        ? 'Publish Article'
-                                                                        : 'Unpublish Article'
+                                                                    article.status !== 'Diterbitkan'
+                                                                        ? 'Terbitkan Masakan'
+                                                                        : 'Batalkan Penerbitan'
                                                                 }
                                                                 description={
-                                                                    article.status !== 'published'
-                                                                        ? 'Are you sure you want to publish this article?'
-                                                                        : 'Are you sure you want to unpublish this article?'
+                                                                    article.status !== 'Diterbitkan'
+                                                                        ? 'Apakah Anda yakin ingin mempublikasikan masakan ini?'
+                                                                        : 'Apakah Anda yakin ingin membatalkan publikasi masakan ini?'
                                                                 }
                                                                 action={() =>
                                                                     router.put(
@@ -179,11 +179,11 @@ export default function List({ auth, ...props }) {
                                                                     <DropdownMenuItem
                                                                         onSelect={(e) => e.preventDefault()}
                                                                     >
-                                                                        Delete
+                                                                        Hapus
                                                                     </DropdownMenuItem>
                                                                 }
-                                                                title="Delete Article"
-                                                                description="Are you sure you want to delete this article?"
+                                                                title="Hapus Masakan"
+                                                                description="Apakah Anda yakin ingin menghapus artikel ini?"
                                                                 action={() =>
                                                                     router.delete(
                                                                         route('internal-articles.destroy', [article]),
@@ -212,7 +212,7 @@ export default function List({ auth, ...props }) {
                 </CardContent>
                 <CardFooter className="justify-between border-t pt-6 text-sm text-muted-foreground">
                     <span>
-                        Showing {meta.from} of {meta.total} articles.
+                        Menampilkan {meta.from} dari {meta.total} masakan.
                     </span>
                     {meta.has_pages && (
                         <div className="flex items-center gap-x-1">

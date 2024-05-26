@@ -25,13 +25,13 @@ export function UpdateProfileInformationForm({ mustVerifyEmail, status }) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Profile Information</CardTitle>
-                <CardDescription>Update your account's profile information and email address.</CardDescription>
+                <CardTitle>Informasi Profil</CardTitle>
+                <CardDescription>Perbarui informasi profil dan alamat email akun Anda.</CardDescription>
             </CardHeader>
             <CardContent>
                 <form onSubmit={submit} className="space-y-6">
                     <div>
-                        <Label htmlFor="name">Name</Label>
+                        <Label htmlFor="name">Nama</Label>
 
                         <Input
                             id="name"

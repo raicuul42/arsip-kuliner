@@ -20,13 +20,13 @@ export function Aside() {
                 Dashboard
             </AsideLink>
             <AsideLink href={route('profile.edit')} active={route().current('profile.edit')}>
-                Settings
+                Pengaturan
             </AsideLink>
             <AsideLink href={route('categories.index')} active={route().current('categories.*')}>
-                Categories
+                Daerah Kuliner
             </AsideLink>
             <AsideLink href={route('tags.index')} active={route().current('tags.*')}>
-                Tags
+                Jenis Kuliner
             </AsideLink>
         </nav>
     );

@@ -48,10 +48,10 @@ export function DeleteUserForm() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Delete Account</CardTitle>
+                <CardTitle>Menghapus Akun</CardTitle>
                 <CardDescription>
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Before
-                    deleting your account, please download any data or information that you wish to retain.
+                    Setelah akun Anda dihapus, semua sumber daya dan datanya akan dihapus secara permanen. sebelum
+                    menghapus akun Anda, silakan unduh data atau informasi apa pun yang ingin Anda simpan.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -61,15 +61,15 @@ export function DeleteUserForm() {
                             variant: 'destructive',
                         })}
                     >
-                        Delete Account
+                        Hapus Akun
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>
-                            <AlertDialogTitle>Delete Account</AlertDialogTitle>
+                            <AlertDialogTitle>Hapus Akun</AlertDialogTitle>
                             <AlertDialogDescription>
-                                Are you sure you want to delete your account? Once your account is deleted, all of its
-                                resources and data will be permanently deleted. Please enter your password to confirm
-                                you would like to permanently delete your account.
+                                Apakah Anda yakin ingin menghapus akun Anda? Setelah akun Anda dihapus, semua sumber
+                                daya dan datanya akan dihapus secara permanen. Masukkan kata sandi Anda untuk
+                                mengonfirmasi bahwa Anda ingin menghapus akun Anda secara permanen.
                             </AlertDialogDescription>
                         </AlertDialogHeader>
 
@@ -84,9 +84,9 @@ export function DeleteUserForm() {
                             <InputErrorMessage message={errors.password} className="mt-2" />
                         </div>
                         <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <AlertDialogCancel>Batal</AlertDialogCancel>
                             <AlertDialogAction onClick={deleteUser} disabled={processing}>
-                                Continue
+                                Lanjutkan
                             </AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>

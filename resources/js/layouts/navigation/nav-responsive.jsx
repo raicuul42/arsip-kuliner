@@ -112,7 +112,7 @@ export function ResponsiveNav() {
                                         activeIcon={IconSettingsFill}
                                         href={route('profile.edit')}
                                     >
-                                        Settings
+                                        Pengaturan
                                     </NavLink>
                                     <NavLink icon={IconLogout} href={route('logout')} method="post" as="button">
                                         Logout

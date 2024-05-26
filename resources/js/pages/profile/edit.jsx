@@ -8,7 +8,7 @@ import { UserLayout } from '@/layouts/user-layout';
 export default function Edit({ mustVerifyEmail, status }) {
     return (
         <>
-            <Head title="Settings" />
+            <Head title="Pengaturan" />
             <div className="mx-auto max-w-7xl space-y-6">
                 <UpdateProfileInformationForm mustVerifyEmail={mustVerifyEmail} status={status} />
                 <UpdatePasswordForm />
@@ -18,4 +18,4 @@ export default function Edit({ mustVerifyEmail, status }) {
     );
 }
 
-Edit.layout = (page) => <UserLayout title="Settings" children={page} />;
+Edit.layout = (page) => <UserLayout title="Pengaturan" children={page} />;

@@ -22,7 +22,7 @@ export function CategoryCard({ category }) {
                 </AspectRatio>
             </Link>
 
-            <Badge className="inline-block outline">{category.articles_count} Article </Badge>
+            <Badge className="inline-block outline">{category.articles_count} Kuliner </Badge>
 
             <Link className="block font-semibold" href={route('categories.show', [category])}>
                 {category.name}

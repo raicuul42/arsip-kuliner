@@ -94,7 +94,7 @@ export function Nav() {
                                                     href={route('profile.edit')}
                                                     className="flex items-center justify-between [&_svg]:size-4 [&_svg]:text-muted-foreground"
                                                 >
-                                                    Settings
+                                                    Pengaturan
                                                     <IconSettings />
                                                 </Link>
                                             </DropdownMenuItem>

@@ -22,7 +22,7 @@ export function TagCard({ tag }) {
                 </AspectRatio>
             </Link>
 
-            <Badge className="inline-block outline">{tag.articles_count} Article </Badge>
+            <Badge className="inline-block outline">{tag.articles_count} Kuliner </Badge>
 
             <Link className="block font-semibold" href={route('tags.show', [tag])}>
                 {tag.name}

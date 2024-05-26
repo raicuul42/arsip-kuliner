@@ -35,8 +35,8 @@ class CategoryController extends Controller
         return inertia('categories/form', [
             'category' => new Category,
             'page_meta' => [
-                'title' => 'Create Category',
-                'description' => 'Create a new category for your articles.',
+                'title' => 'Tambah Daerah Kuliner',
+                'description' => 'Tambah daerah kuliner baru di bawah ini.',
                 'url' => route('categories.store'),
                 'method' => 'post',
             ],
@@ -66,7 +66,7 @@ class CategoryController extends Controller
         $articles = Resources\ArticleBlockResource::collection($self = $category->articles()
             ->select(['id', 'category_id', 'user_id', 'title', 'slug', 'teaser', 'thumbnail', 'published_at'])
             ->with(['category:id,name,slug', 'user:id,name'])
-            ->where('status', \App\Enums\ArticleStatus::Published)
+            ->where('status', \App\Enums\ArticleStatus::Diterbitkan)
             ->latest('published_at')
             ->paginate(9))
             ->additional([
@@ -90,8 +90,8 @@ class CategoryController extends Controller
         return inertia('categories/form', [
             'category' => $category,
             'page_meta' => [
-                'title' => 'Edit Category',
-                'description' => 'Edit the category details below.',
+                'title' => 'Edit Daerah Kuliner',
+                'description' => 'Edit daerah kuliner di bawah ini.',
                 'url' => route('categories.update', $category),
                 'method' => 'put',
             ],

@@ -32,7 +32,7 @@ export default function Login({ status, canResetPassword }) {
             <Head title="Log in" />
 
             {status && <div className="mb-4 text-sm font-medium text-green-600">{status}</div>}
-            <AuthenticatedCard title="Log in to your account" description="Or create a new account">
+            <AuthenticatedCard title="Masuk ke akun anda" description="Silahkan masuk ke akun yang telah terdaftar">
                 <form onSubmit={submit} className="space-y-6">
                     <div>
                         <Label htmlFor="email">Email</Label>
@@ -52,7 +52,7 @@ export default function Login({ status, canResetPassword }) {
                     </div>
 
                     <div>
-                        <Label htmlFor="password">Password</Label>
+                        <Label htmlFor="password">Kata Sandi</Label>
 
                         <Input
                             id="password"
@@ -74,21 +74,21 @@ export default function Login({ status, canResetPassword }) {
                                 checked={data.remember}
                                 onCheckedChange={(e) => setData('remember', e)}
                             />
-                            <span className="ms-2 text-sm">Remember me</span>
+                            <span className="ms-2 text-sm">Ingat saya</span>
                         </label>
                         {canResetPassword && (
                             <Link
                                 href={route('password.request')}
                                 className="text-sm text-muted-foreground transition duration-200 hover:text-foreground"
                             >
-                                Forgot password?
+                                Lupa kata sandi?
                             </Link>
                         )}
                     </div>
 
                     <div className="flex items-center justify-end">
                         <Button className="ms-4" disabled={processing}>
-                            Log in
+                            Masuk
                         </Button>
                     </div>
                 </form>
