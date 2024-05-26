@@ -162,7 +162,7 @@ class InternalArticleController extends Controller implements HasMiddleware
     public function approve(Models\Article $article)
     {
         $article->update([
-            'status' => $article->status === ArticleStatus::Diterbitkan ? ArticleStatus::Pending : ArticleStatus::Diterbitkan,
+            'status' => $article->status === ArticleStatus::Diterbitkan ? ArticleStatus::Ditunda : ArticleStatus::Diterbitkan,
             'published_at' => $article->status === ArticleStatus::Diterbitkan ? null : now(),
         ]);
 
